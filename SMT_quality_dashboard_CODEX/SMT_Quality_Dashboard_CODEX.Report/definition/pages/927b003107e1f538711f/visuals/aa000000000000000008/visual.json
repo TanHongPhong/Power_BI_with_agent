@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "aa000000000000000008",
+  "position": {
+    "x": 32,
+    "y": 550,
+    "z": 8,
+    "height": 270,
+    "width": 900,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimWeek"
+                    }
+                  },
+                  "Property": "week"
+                }
+              },
+              "queryRef": "DimWeek.week",
+              "nativeQueryRef": "week",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "Defective Rate %"
+                }
+              },
+              "queryRef": "inspections.Defective Rate %",
+              "nativeQueryRef": "Defective Rate %"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Weekly Defective Rate'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

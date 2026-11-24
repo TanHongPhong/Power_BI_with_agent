@@ -1,0 +1,134 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "595f965cc6094cc1a74c",
+  "position": {
+    "x": 730,
+    "y": 1062,
+    "z": 17000,
+    "height": 205,
+    "width": 668,
+    "tabOrder": 17000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimWeek"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "DimWeek.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "Total SPC Subgroups"
+                }
+              },
+              "queryRef": "SPC_XbarR.Total SPC Subgroups",
+              "nativeQueryRef": "Total SPC Subgroups"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "Xbar Violations"
+                }
+              },
+              "queryRef": "SPC_XbarR.Xbar Violations",
+              "nativeQueryRef": "Xbar Violations"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R Violations"
+                }
+              },
+              "queryRef": "SPC_XbarR.R Violations",
+              "nativeQueryRef": "R Violations"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "SPC Alerted Subgroups"
+                }
+              },
+              "queryRef": "SPC_XbarR.SPC Alerted Subgroups",
+              "nativeQueryRef": "SPC Alerted Subgroups"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_p_Hourly"
+                    }
+                  },
+                  "Property": "p Violations"
+                }
+              },
+              "queryRef": "SPC_p_Hourly.p Violations",
+              "nativeQueryRef": "p Violations"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SPC trial-limit signal count'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

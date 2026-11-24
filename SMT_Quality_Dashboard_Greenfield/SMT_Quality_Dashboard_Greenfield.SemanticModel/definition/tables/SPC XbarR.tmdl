@@ -1,0 +1,128 @@
+table 'SPC XbarR'
+	lineageTag: 78583804-61eb-46e4-bf16-01d7107ee835
+
+	measure 'Xbar Point' = AVERAGE('SPC XbarR'[Xbar])
+		formatString: 0.00
+		lineageTag: 708b43b7-28bb-410f-b26a-a17079093445
+
+	measure 'R Point' = AVERAGE('SPC XbarR'[Range])
+		formatString: 0.00
+		lineageTag: 54d8d236-0d63-486c-a4a3-02b5810a14e6
+
+	measure 'Xbar CL' = CALCULATE(AVERAGE('SPC XbarR'[Xbar]), REMOVEFILTERS('SPC XbarR'[subgroup_id]), REMOVEFILTERS('SPC XbarR'[timestamp]))
+		formatString: 0.00
+		lineageTag: 9ddc602a-3508-4a06-b37a-48726c1661ff
+
+	measure 'R CL' = CALCULATE(AVERAGE('SPC XbarR'[Range]), REMOVEFILTERS('SPC XbarR'[subgroup_id]), REMOVEFILTERS('SPC XbarR'[timestamp]))
+		formatString: 0.00
+		lineageTag: 445ea1ca-9f78-4c5d-bfbd-9b9bc466a160
+
+	measure 'Xbar UCL' = [Xbar CL] + 0.577 * [R CL]
+		formatString: 0.00
+		lineageTag: 5febd856-ef33-4c33-8c8b-bacc55e0e27b
+
+	measure 'Xbar LCL' = [Xbar CL] - 0.577 * [R CL]
+		formatString: 0.00
+		lineageTag: 22f6b47d-980b-43e5-bd9a-91b190dbdc6f
+
+	measure 'R UCL' = 2.114 * [R CL]
+		formatString: 0.00
+		lineageTag: 9c77741a-3228-4f61-9194-bc45fa9704d1
+
+	measure 'R LCL' = 0
+		formatString: 0.00
+		lineageTag: 23fb8609-3eaa-49c7-ae02-9d4b04f812c2
+
+	measure 'Xbar Alarm' = IF([Xbar Point]>[Xbar UCL] || [Xbar Point]<[Xbar LCL],1,0)
+		formatString: 0
+		lineageTag: c8a40905-1e37-4d4e-8954-6b8aec8e2aba
+
+	measure 'R Alarm' = IF([R Point]>[R UCL],1,0)
+		formatString: 0
+		lineageTag: 38da3eef-05e8-456a-9bf8-97168b8a5d5c
+
+	measure 'XbarR Alarm' = IF([Xbar Alarm]=1 || [R Alarm]=1,1,0)
+		formatString: 0
+		lineageTag: 5916febe-64c2-428c-ab93-ca4996873b79
+
+	measure 'Unique Xbar-R Alerted Subgroups' = SUMX(VALUES('SPC XbarR'[subgroup_id]), [XbarR Alarm])
+		formatString: 0
+		lineageTag: 2971b7c8-c002-45d3-ab0f-3fcf7d42f7cb
+
+	measure 'Xbar Violations' = SUMX(VALUES('SPC XbarR'[subgroup_id]),[Xbar Alarm])
+		formatString: 0
+		lineageTag: 89fe4363-e8c2-434f-96a7-bca549616110
+
+	measure 'R Violations' = SUMX(VALUES('SPC XbarR'[subgroup_id]),[R Alarm])
+		formatString: 0
+		lineageTag: ffbed01b-cffb-4777-b8b8-5c090215aa74
+
+	measure 'Total SPC Subgroups' = DISTINCTCOUNT('SPC XbarR'[subgroup_id])
+		formatString: 0
+		lineageTag: c4e21c76-cfb8-4ad8-995a-62f2ea011551
+
+	column subgroup_id
+		lineageTag: a97665d6-e9f9-4a37-aa35-f6f08a98774f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Measurements[subgroup_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		lineageTag: 55e613ce-a464-463a-b700-ef77555db65d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Measurements[timestamp]
+
+		variation Variation
+			isDefault
+			relationship: 637067d2-d989-4c64-ace0-4ebff0da8c2d
+			defaultHierarchy: LocalDateTable_c54e104f-bd96-4c13-81fd-d76f62f347bb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		lineageTag: a510156a-ffd0-4a3f-bf22-a5d31d299d1a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Measurements[week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		lineageTag: fbec0f35-4c4a-4c2a-9a98-8b0cdd33f4b0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Measurements[phase]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample Size'
+		lineageTag: 6723be96-0642-4503-9d08-e87c2538832c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Sample Size]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Xbar
+		lineageTag: 71514560-10de-4d8e-b7c4-bc4dff1f8d71
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Xbar]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Range
+		lineageTag: 0730db3f-ddac-4d4a-a59e-4c1065341cd0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Range]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SPC XbarR' = calculated
+		mode: import
+		source = SUMMARIZECOLUMNS(Measurements[subgroup_id], Measurements[timestamp], Measurements[week], Measurements[phase], "Sample Size", COUNTROWS(Measurements), "Xbar", AVERAGE(Measurements[paste_height_um]), "Range", MAX(Measurements[paste_height_um]) - MIN(Measurements[paste_height_um]))
+

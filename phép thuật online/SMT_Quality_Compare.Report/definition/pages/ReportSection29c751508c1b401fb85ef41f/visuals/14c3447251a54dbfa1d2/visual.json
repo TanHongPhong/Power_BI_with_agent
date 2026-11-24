@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "14c3447251a54dbfa1d2",
+  "position": {
+    "x": 986,
+    "y": 768,
+    "z": 16000,
+    "height": 284,
+    "width": 416,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DQ_Checks"
+                    }
+                  },
+                  "Property": "Check"
+                }
+              },
+              "queryRef": "DQ_Checks.Check",
+              "nativeQueryRef": "Check"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DQ_Checks"
+                    }
+                  },
+                  "Property": "Issues"
+                }
+              },
+              "queryRef": "DQ_Checks.Issues",
+              "nativeQueryRef": "Issues"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Data-quality checks — failure counts'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

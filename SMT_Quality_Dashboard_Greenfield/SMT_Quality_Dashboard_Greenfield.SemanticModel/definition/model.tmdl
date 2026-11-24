@@ -1,0 +1,30 @@
+model 'SMT Quality Dashboard Greenfield'
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
+
+annotation PBI_QueryOrder = ["Measurements","Inspections","Defects","Specifications","Phase","Week","Shift"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table Measurements
+ref table Inspections
+ref table Defects
+ref table Specifications
+ref table 'SPC XbarR'
+ref table 'SPC p Hourly'
+ref table Phase
+ref table Week
+ref table Shift
+ref table DateTableTemplate_2729c43b-383e-44a9-a1c9-4b065b9f53d7
+ref table LocalDateTable_7ffb63f6-dbbd-4806-87ce-b7fecc46338b
+ref table LocalDateTable_e1b84cd0-d7ee-4873-9119-50fa311cf81f
+ref table LocalDateTable_940aad5d-5427-4b6a-ac49-6c177474947f
+ref table LocalDateTable_c54e104f-bd96-4c13-81fd-d76f62f347bb
+ref table LocalDateTable_50eec76a-b759-44af-8f0c-13ea6b0a0c64
+

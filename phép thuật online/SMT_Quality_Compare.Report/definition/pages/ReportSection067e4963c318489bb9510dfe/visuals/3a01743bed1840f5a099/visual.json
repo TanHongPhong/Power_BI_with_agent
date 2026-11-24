@@ -1,0 +1,162 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "3a01743bed1840f5a099",
+  "position": {
+    "x": 35,
+    "y": 1062,
+    "z": 16000,
+    "height": 205,
+    "width": 665,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimWeek"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "DimWeek.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Mean Height"
+                }
+              },
+              "queryRef": "measurements.Mean Height",
+              "nativeQueryRef": "Mean Height"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Overall Std"
+                }
+              },
+              "queryRef": "measurements.Overall Std",
+              "nativeQueryRef": "Overall Std"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Within Std"
+                }
+              },
+              "queryRef": "measurements.Within Std",
+              "nativeQueryRef": "Within Std"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Cp"
+                }
+              },
+              "queryRef": "measurements.Cp",
+              "nativeQueryRef": "Cp"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Cpk"
+                }
+              },
+              "queryRef": "measurements.Cpk",
+              "nativeQueryRef": "Cpk"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Pp"
+                }
+              },
+              "queryRef": "measurements.Pp",
+              "nativeQueryRef": "Pp"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Ppk"
+                }
+              },
+              "queryRef": "measurements.Ppk",
+              "nativeQueryRef": "Ppk"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Capability comparison'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

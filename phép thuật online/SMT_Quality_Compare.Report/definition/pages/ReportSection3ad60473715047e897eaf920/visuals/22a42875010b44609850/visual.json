@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "22a42875010b44609850",
+  "position": {
+    "x": 735,
+    "y": 190,
+    "z": 8000,
+    "height": 110,
+    "width": 322,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R Violations"
+                }
+              },
+              "queryRef": "SPC_XbarR.R Violations",
+              "nativeQueryRef": "R Violations"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

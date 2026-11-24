@@ -1,0 +1,134 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "aa000000000000000011",
+  "position": {
+    "x": 964,
+    "y": 850,
+    "z": 11,
+    "height": 270,
+    "width": 900,
+    "tabOrder": 11
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimWeek"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "DimWeek.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "Total SPC Subgroups"
+                }
+              },
+              "queryRef": "DimDate.Total SPC Subgroups",
+              "nativeQueryRef": "Total SPC Subgroups"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "Xbar Violations"
+                }
+              },
+              "queryRef": "DimDate.Xbar Violations",
+              "nativeQueryRef": "Xbar Violations"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "R Violations"
+                }
+              },
+              "queryRef": "DimDate.R Violations",
+              "nativeQueryRef": "R Violations"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "Unique Xbar-R Alerted Subgroups"
+                }
+              },
+              "queryRef": "DimDate.Unique Xbar-R Alerted Subgroups",
+              "nativeQueryRef": "Unique Xbar-R Alerted Subgroups"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "p Violations"
+                }
+              },
+              "queryRef": "DimDate.p Violations",
+              "nativeQueryRef": "p Violations"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SPC Stability Summary'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "SMT_Quality_Dashboard_Greenfield"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "95721412-fb20-4a33-bb3c-8787b5463bb0"
+  }
+}

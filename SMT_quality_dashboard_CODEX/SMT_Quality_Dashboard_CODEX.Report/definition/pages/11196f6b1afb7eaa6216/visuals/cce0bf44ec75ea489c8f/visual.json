@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "cce0bf44ec75ea489c8f",
+  "position": {
+    "x": 984,
+    "y": 240,
+    "z": 4000,
+    "height": 288,
+    "width": 440,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "shift"
+                }
+              },
+              "queryRef": "inspections.shift",
+              "nativeQueryRef": "shift",
+              "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "Total_board"
+                }
+              },
+              "queryRef": "inspections.Total_board",
+              "nativeQueryRef": "Total_board"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "Fail board"
+                }
+              },
+              "queryRef": "inspections.Fail board",
+              "nativeQueryRef": "Fail board"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "Defective Rate %"
+                }
+              },
+              "queryRef": "inspections.Defective Rate %",
+              "nativeQueryRef": "Defective Rate %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "inspections"
+                  }
+                },
+                "Property": "Defective Rate %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'\tDefective Rate by Shift'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

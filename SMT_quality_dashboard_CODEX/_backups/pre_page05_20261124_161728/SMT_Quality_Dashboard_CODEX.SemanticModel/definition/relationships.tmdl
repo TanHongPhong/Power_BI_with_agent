@@ -1,0 +1,87 @@
+relationship 1590d2c6-8403-407d-83f7-253cf14b9916
+	joinOnDateBehavior: datePartOnly
+	fromColumn: measurements.timestamp
+	toColumn: LocalDateTable_7464daa0-8787-4294-8985-8de247ef2092.Date
+
+relationship df77aea5-f9e8-4636-9902-d9df99f63b93
+	joinOnDateBehavior: datePartOnly
+	fromColumn: defects.timestamp
+	toColumn: LocalDateTable_b39a42fc-006f-495d-8c67-86fb24ada160.Date
+
+relationship f215f450-9a5b-4711-9a71-d57dc9afd495
+	joinOnDateBehavior: datePartOnly
+	fromColumn: inspections.timestamp
+	toColumn: LocalDateTable_3606fa24-aaf5-4dfe-8b09-b6cd57f7ec21.Date
+
+relationship AutoDetected_07f700f7-da4b-4852-b548-fb27940d0453
+	fromColumn: defects.board_id
+	toColumn: inspections.board_id
+
+relationship 5c6acff0-63f8-631e-2908-104147bb4eea
+	fromColumn: inspections.week
+	toColumn: DimWeek.week
+
+relationship 796fef63-d9b4-d450-7735-830b8b80b60b
+	fromColumn: measurements.week
+	toColumn: DimWeek.week
+
+relationship ab8c51d0-590c-96ea-70ba-52f8991f66e1
+	fromColumn: measurements.production_date
+	toColumn: DimDate.Date
+
+relationship 5f36418e-e76e-1262-99b3-e420de586d77
+	fromColumn: inspections.production_date
+	toColumn: DimDate.Date
+
+relationship 3d8f1c41-67f0-4e4e-b897-07197ea462a1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SPC_XbarR.timestamp
+	toColumn: LocalDateTable_9fc5e2be-ae5f-441b-92e3-9b68952447be.Date
+
+relationship 77cd7c70-7b9d-41a3-a7c4-7662f30b3412
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SPC_p_Hourly.timestamp
+	toColumn: LocalDateTable_ccef363a-c87d-4be1-88cc-57ac73e0e58a.Date
+
+relationship a73dc06e-f0b8-fc72-a8bc-cc26cb2523c1
+	fromColumn: SPC_p_Hourly.week
+	toColumn: DimWeek.week
+
+relationship d338140b-9e1c-0b22-3580-fb217e46f375
+	fromColumn: SPC_XbarR.week
+	toColumn: DimWeek.week
+
+relationship 9ddc58a9-cc96-1f91-e39f-f345db4e7ab9
+	fromColumn: SPC_XbarR.production_date
+	toColumn: DimDate.Date
+
+relationship 8c2ff05c-ec86-68d8-1dbe-20887449adf1
+	fromColumn: SPC_p_Hourly.production_date
+	toColumn: DimDate.Date
+
+relationship 7fb32768-c670-4c8a-88a9-6051541abb85
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Analysis_Hourly.timestamp
+	toColumn: LocalDateTable_bc576480-3e4b-4f56-9799-f3c1f66efd16.Date
+
+relationship AutoDetected_4ee8edbe-f9ef-473f-b01b-4de3cb1d8440
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Analysis_Hourly.subgroup_id
+	toColumn: SPC_XbarR.subgroup_id
+
+relationship faf94c05-c1b9-aa0d-8a62-11deed6456c7
+	isActive: false
+	fromColumn: Analysis_Hourly.week
+	toColumn: DimWeek.week
+
+relationship d051b520-cb5c-4596-8796-1386890ec138
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.Date
+	toColumn: LocalDateTable_175c5270-4f9d-4533-b3f4-47dc1d79d990.Date
+
+relationship ac4088d3-acbd-84cb-c149-c84bec3691d2
+	isActive: false
+	fromColumn: Analysis_Hourly.production_date
+	toColumn: DimDate.Date
+

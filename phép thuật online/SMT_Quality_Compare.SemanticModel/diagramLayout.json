@@ -1,0 +1,154 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 337.0740690583753,
+            "y": -48.819873785129857
+          },
+          "nodeIndex": "Analysis_Hourly",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1149.5971266420286,
+            "y": 3.301435610253634
+          },
+          "nodeIndex": "defects",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 863.70614886529847,
+            "y": 346.18418927855691
+          },
+          "nodeIndex": "DimDate",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 575.18125126358768,
+            "y": 302.94913732298426
+          },
+          "nodeIndex": "DimWeek",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1383.5971266420286,
+            "y": 374.44967763030439
+          },
+          "nodeIndex": "DQ_Checks",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1149.1269965951776,
+            "y": 355.34194879125835
+          },
+          "nodeIndex": "inspections",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 421.9870319626404,
+            "y": 507.86780125784969
+          },
+          "nodeIndex": "measurements",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 125.72356361013124
+          },
+          "nodeIndex": "QQ_Points",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 765.8305359731595,
+            "y": -50
+          },
+          "nodeIndex": "SPC_p_Hourly",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 765.79834514144954,
+            "y": 550.89935526060879
+          },
+          "nodeIndex": "SPC_XbarR",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1667.5971266420286,
+            "y": 338.44967763030439
+          },
+          "nodeIndex": "specs",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

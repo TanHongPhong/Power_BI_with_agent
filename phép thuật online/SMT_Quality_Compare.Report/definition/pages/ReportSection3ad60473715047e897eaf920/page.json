@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSection3ad60473715047e897eaf920",
+  "displayName": "02 · Statistical Process Control",
+  "displayOption": "FitToPage",
+  "height": 1190,
+  "width": 1440
+}

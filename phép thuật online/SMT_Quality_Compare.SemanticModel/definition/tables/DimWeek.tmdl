@@ -1,0 +1,34 @@
+table DimWeek
+	lineageTag: d333c06f-14a3-407e-bfb5-a63cea90aaa6
+
+	column week
+		dataType: int64
+		lineageTag: 7c5d418c-5856-4aa2-b3a3-49c65719d1f6
+		summarizeBy: none
+		sourceColumn: week
+
+	column phase
+		dataType: string
+		lineageTag: cf01a1ae-593a-4c92-94a0-693e6c43d7ec
+		summarizeBy: none
+		sourceColumn: phase
+
+	column phase_order
+		dataType: int64
+		lineageTag: 60becd86-3add-4a8c-9d40-c4b3981f08a0
+		summarizeBy: none
+		sourceColumn: phase_order
+
+	partition DimWeek = m
+		mode: import
+		source =
+				let
+				    EncodedCsv = Text.Combine({
+				        "d2VlayxwaGFzZSxwaGFzZV9vcmRlcgoxLGJhc2VsaW5lLDAKMixiYXNlbGluZSwwCjMsYmFzZWxpbmUsMAo0LGJhc2VsaW5lLDAKNSxpbXByb3ZlZCwxCjYsaW1wcm92ZWQsMQo3LGltcHJvdmVkLDEKOCxpbXByb3ZlZCwxCg=="
+				    }),
+				    CsvSource = Csv.Document(Binary.FromText(EncodedCsv, BinaryEncoding.Base64), [Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(CsvSource, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(PromotedHeaders, {{"week", Int64.Type},{"phase", type text},{"phase_order", Int64.Type}}, "en-US")
+				in
+				    Typed
+

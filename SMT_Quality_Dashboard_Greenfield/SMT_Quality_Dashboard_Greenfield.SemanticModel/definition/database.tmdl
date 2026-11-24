@@ -1,0 +1,4 @@
+/// Greenfield SMT manufacturing quality semantic model built from approved CSV data.
+database
+	compatibilityLevel: 1700
+

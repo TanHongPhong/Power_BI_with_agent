@@ -1,0 +1,139 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Defects",
+          "nodeLineageTag": "38f4fdb6-9e8b-423c-91ca-fd2286e4bf35",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 0
+          },
+          "nodeIndex": "Inspections",
+          "nodeLineageTag": "fdc99cb2-2eea-42d7-81cb-79aaad6b46ca",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 0
+          },
+          "nodeIndex": "Measurements",
+          "nodeLineageTag": "83751f77-97e4-44b2-93f6-4d92910e5272",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 0
+          },
+          "nodeIndex": "SPC p Hourly",
+          "nodeLineageTag": "18c6774c-da40-47f2-8af2-57fcc7087122",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 0
+          },
+          "nodeIndex": "SPC XbarR",
+          "nodeLineageTag": "78583804-61eb-46e4-bf16-01d7107ee835",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 2
+          },
+          "nodeIndex": "Specifications",
+          "nodeLineageTag": "45070903-62ee-41c6-b342-26dc33622ffa",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 98
+          },
+          "nodeIndex": "Phase",
+          "nodeLineageTag": "5c8e3add-9c0c-4ade-8330-5ca5a8411d59",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1988,
+            "y": 98
+          },
+          "nodeIndex": "Shift",
+          "nodeLineageTag": "e9725bc2-321b-4492-a0ec-4da00bc8f737",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2272,
+            "y": 98
+          },
+          "nodeIndex": "Week",
+          "nodeLineageTag": "cde6220a-55d6-4d73-b76c-558f139a0070",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

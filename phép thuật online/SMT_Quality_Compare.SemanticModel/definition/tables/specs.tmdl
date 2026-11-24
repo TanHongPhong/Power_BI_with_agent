@@ -1,0 +1,52 @@
+table specs
+	lineageTag: 83cdc6cb-c9f3-4f45-bfff-a447140ab23e
+
+	column ctq
+		dataType: string
+		lineageTag: f56f963e-0273-4140-a736-53a43caec354
+		summarizeBy: none
+		sourceColumn: ctq
+
+	column target
+		dataType: double
+		lineageTag: ee81e444-151d-455c-a718-95efe3fd0485
+		summarizeBy: none
+		sourceColumn: target
+
+	column lsl
+		dataType: double
+		lineageTag: 1b6a95e3-8c6e-404d-9d5b-0427771e402a
+		summarizeBy: none
+		sourceColumn: lsl
+
+	column usl
+		dataType: double
+		lineageTag: b60de0d4-1efa-4332-aff5-2e28fac6273f
+		summarizeBy: none
+		sourceColumn: usl
+
+	column subgroup_size
+		dataType: int64
+		lineageTag: f2e4c126-f06c-41b0-b667-e1bd1d5e48ab
+		summarizeBy: none
+		sourceColumn: subgroup_size
+
+	column opportunities_per_board
+		dataType: int64
+		lineageTag: a7acd37c-22ab-4312-81b8-6b0ea4036442
+		summarizeBy: none
+		sourceColumn: opportunities_per_board
+
+	partition specs = m
+		mode: import
+		source =
+				let
+				    EncodedCsv = Text.Combine({
+				        "Y3RxLHRhcmdldCxsc2wsdXNsLHN1Ymdyb3VwX3NpemUsb3Bwb3J0dW5pdGllc19wZXJfYm9hcmQKc29sZGVyX3Bhc3RlX2hlaWdodF91bSwxMjAuMCwxMDAuMCwxNDAuMCw1LDIwMAo="
+				    }),
+				    CsvSource = Csv.Document(Binary.FromText(EncodedCsv, BinaryEncoding.Base64), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(CsvSource, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(PromotedHeaders, {{"ctq", type text},{"target", type number},{"lsl", type number},{"usl", type number},{"subgroup_size", Int64.Type},{"opportunities_per_board", Int64.Type}}, "en-US")
+				in
+				    Typed
+

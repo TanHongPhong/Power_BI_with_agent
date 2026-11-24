@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "aa000000000000000004",
+  "position": {
+    "x": 960,
+    "y": 115,
+    "z": 4,
+    "height": 110,
+    "width": 440,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "DPMO Reduction"
+                }
+              },
+              "queryRef": "DimDate.DPMO Reduction",
+              "nativeQueryRef": "DPMO Reduction"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'DPMO reduction'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

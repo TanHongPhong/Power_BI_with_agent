@@ -1,0 +1,15 @@
+/// Conformed week dimension for the eight-week improvement assessment.
+table Week
+	lineageTag: cde6220a-55d6-4d73-b76c-558f139a0070
+
+	column Week
+		dataType: int64
+		isKey
+		isNullable: false
+		lineageTag: 34b4cf4a-dd0e-4586-aa6b-92497be6adc8
+		sourceColumn: Week
+
+	partition Week = m
+		mode: import
+		source = #table(type table [Week = Int64.Type], List.Transform({1..8}, each {_}))
+

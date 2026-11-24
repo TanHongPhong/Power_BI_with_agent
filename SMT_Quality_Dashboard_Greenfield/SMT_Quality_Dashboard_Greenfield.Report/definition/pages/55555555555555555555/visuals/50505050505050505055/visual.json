@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "50505050505050505055",
+  "position": {
+    "x": 40,
+    "y": 697.5,
+    "z": 6,
+    "height": 312.5,
+    "width": 860,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "Measurements.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Mean Paste Height"
+                }
+              },
+              "queryRef": "Measurements.Mean Paste Height",
+              "nativeQueryRef": "Mean Paste Height"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Overall Std"
+                }
+              },
+              "queryRef": "Measurements.Overall Std",
+              "nativeQueryRef": "Overall Std"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Cp"
+                }
+              },
+              "queryRef": "Measurements.Cp",
+              "nativeQueryRef": "Cp"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Cpk"
+                }
+              },
+              "queryRef": "Measurements.Cpk",
+              "nativeQueryRef": "Cpk"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Pp"
+                }
+              },
+              "queryRef": "Measurements.Pp",
+              "nativeQueryRef": "Pp"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Ppk"
+                }
+              },
+              "queryRef": "Measurements.Ppk",
+              "nativeQueryRef": "Ppk"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

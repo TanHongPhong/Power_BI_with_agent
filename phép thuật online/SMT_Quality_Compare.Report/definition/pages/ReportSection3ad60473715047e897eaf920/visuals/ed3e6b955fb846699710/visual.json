@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "ed3e6b955fb846699710",
+  "position": {
+    "x": 1085,
+    "y": 190,
+    "z": 9000,
+    "height": 110,
+    "width": 322,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_p_Hourly"
+                    }
+                  },
+                  "Property": "p Violations"
+                }
+              },
+              "queryRef": "SPC_p_Hourly.p Violations",
+              "nativeQueryRef": "p Violations"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

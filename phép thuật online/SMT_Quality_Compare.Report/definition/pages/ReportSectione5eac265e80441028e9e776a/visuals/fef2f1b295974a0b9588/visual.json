@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "fef2f1b295974a0b9588",
+  "position": {
+    "x": 1085,
+    "y": 190,
+    "z": 9000,
+    "height": 112,
+    "width": 320,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "defects"
+                    }
+                  },
+                  "Property": "Boards with Selected Defect"
+                }
+              },
+              "queryRef": "defects.Boards with Selected Defect",
+              "nativeQueryRef": "Boards with Selected Defect"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

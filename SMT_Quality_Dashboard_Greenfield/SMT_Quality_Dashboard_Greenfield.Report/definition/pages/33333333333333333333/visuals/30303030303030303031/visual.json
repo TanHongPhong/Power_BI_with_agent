@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "30303030303030303031",
+  "position": {
+    "x": 980,
+    "y": 100,
+    "z": 3,
+    "height": 160,
+    "width": 400,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Cp"
+                }
+              },
+              "queryRef": "Measurements.Cp",
+              "nativeQueryRef": "Cp"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Cpk"
+                }
+              },
+              "queryRef": "Measurements.Cpk",
+              "nativeQueryRef": "Cpk"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Pp"
+                }
+              },
+              "queryRef": "Measurements.Pp",
+              "nativeQueryRef": "Pp"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Ppk"
+                }
+              },
+              "queryRef": "Measurements.Ppk",
+              "nativeQueryRef": "Ppk"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

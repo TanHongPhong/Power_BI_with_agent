@@ -1,0 +1,199 @@
+table SPC_XbarR
+	lineageTag: acb243a1-8607-45f7-86a3-f263de9f0686
+
+	measure 'Xbar Point' =
+			
+			SELECTEDVALUE(SPC_XbarR[Xbar])
+		lineageTag: ecb332ee-10c7-41b0-b842-19fc79b1ccba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'R Point' =
+			
+			AVERAGE(SPC_XbarR[range])
+		lineageTag: 0585fcdc-17e7-4c6d-b9dc-a03d6516b2c9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Xbar CL' =
+			
+			VAR CurrentPhase =
+			    SELECTEDVALUE(SPC_XbarR[phase])
+			RETURN
+			IF(
+			    ISBLANK(CurrentPhase),
+			    BLANK(),
+			    CALCULATE(
+			        AVERAGE(SPC_XbarR[Xbar]),
+			        REMOVEFILTERS(SPC_XbarR),
+			        REMOVEFILTERS(DimWeek),
+			        REMOVEFILTERS(DimDate),
+			        SPC_XbarR[phase] = CurrentPhase
+			    )
+			)
+		formatString: 0.00
+		lineageTag: 27606f3d-425c-4cfb-a7bc-9b8fa91fffa3
+
+	measure 'R CL' =
+			
+			VAR CurrentPhase =
+			    SELECTEDVALUE(SPC_XbarR[phase])
+			RETURN
+			IF(
+			    ISBLANK(CurrentPhase),
+			    BLANK(),
+			    CALCULATE(
+			        AVERAGE(SPC_XbarR[range]),
+			        REMOVEFILTERS(SPC_XbarR),
+			        REMOVEFILTERS(DimWeek),
+			        REMOVEFILTERS(DimDate),
+			        SPC_XbarR[phase] = CurrentPhase
+			    )
+			)
+		formatString: 0
+		lineageTag: cda0f12b-2e69-4b54-b428-27ac44b83f72
+
+	measure 'Xbar UCL' =
+			
+			[Xbar CL] + 0.577 * [R CL]
+		formatString: 0.00
+		lineageTag: 22e6e6b8-befa-4e5c-8784-905d2dab23b8
+
+	measure 'Xbar LCL' =
+			
+			[Xbar CL] - 0.577 * [R CL]
+		formatString: 0.00
+		lineageTag: 87cc8090-98b1-4382-a275-9d97fae3e832
+
+	measure 'R UCL' =
+			
+			2.114 * [R CL]
+		lineageTag: f26ef422-b660-4045-8a57-7954da415237
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'R LCL' =
+			
+			IF(
+			    ISBLANK([R CL]),
+			    BLANK(),
+			    0
+			)
+		formatString: 0
+		lineageTag: 93a0e858-2a42-422e-9363-39b26c06d728
+
+	column subgroup_id
+		dataType: int64
+		formatString: 0
+		lineageTag: be1d4768-a778-4b86-b95a-5eb49d0fc494
+		summarizeBy: none
+		sourceColumn: subgroup_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e7e44d77-0533-4571-be62-fcf94869074d
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		variation Variation
+			isDefault
+			relationship: 3d8f1c41-67f0-4e4e-b897-07197ea462a1
+			defaultHierarchy: LocalDateTable_9fc5e2be-ae5f-441b-92e3-9b68952447be.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: 50d819b6-cb69-4da7-9819-6f5c8ae1f2c5
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		dataType: string
+		lineageTag: 0d8df180-07ed-484f-8c38-3ac56dd52786
+		summarizeBy: none
+		sourceColumn: phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column production_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b3831206-07e3-48c9-bc7a-963473666f0d
+		summarizeBy: none
+		sourceColumn: production_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Sample_n
+		dataType: int64
+		formatString: 0
+		lineageTag: 54319232-44b1-44ee-a206-91b593fb4c46
+		summarizeBy: sum
+		sourceColumn: Sample_n
+
+		annotation SummarizationSetBy = Automatic
+
+	column Xbar
+		dataType: double
+		lineageTag: c227619d-dd11-4d1c-8727-9288f71e1fe4
+		summarizeBy: sum
+		sourceColumn: Xbar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MaxHeight
+		dataType: double
+		lineageTag: 688a2418-2979-44d8-a12e-a9e0f4f702eb
+		summarizeBy: sum
+		sourceColumn: MaxHeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MinHeight
+		dataType: double
+		lineageTag: 12b196b1-31ec-467d-8280-bf1425c78c12
+		summarizeBy: sum
+		sourceColumn: MinHeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column range
+		dataType: double
+		lineageTag: a008a8e3-ee8f-4716-b955-62cfb1af19d9
+		summarizeBy: sum
+		sourceColumn: range
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition SPC_XbarR = m
+		mode: import
+		source =
+				let
+				    Source = measurements,
+				    #"Grouped Rows" = Table.Group(Source, {"subgroup_id", "timestamp", "week", "phase", "production_date"}, {{"Sample_n", each Table.RowCount(_), Int64.Type}, {"Xbar", each List.Average([paste_height_um]), type nullable number}, {"MaxHeight", each List.Max([paste_height_um]), type nullable number}, {"MinHeight", each List.Min([paste_height_um]), type nullable number}}),
+				    #"Added Custom" = Table.AddColumn(#"Grouped Rows", "range", each [MaxHeight]-[MinHeight]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"range", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "4226d6a7f5c146e78b83",
+  "position": {
+    "x": 730,
+    "y": 1055,
+    "z": 17000,
+    "height": 248,
+    "width": 675,
+    "tabOrder": 17000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "6M / ROOT-CAUSE HYPOTHESES",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16px",
+                      "color": "#284559"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Machine — stencil clogging (coded scenario)",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16px",
+                      "color": "#284559"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Method — cleaning frequency and SOP adherence",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16px",
+                      "color": "#284559"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Material — solder paste condition (unmeasured)",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16px",
+                      "color": "#284559"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Man — operation method (not causal evidence)",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16px",
+                      "color": "#284559"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Measurement — SPI calibration (unmeasured)",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16px",
+                      "color": "#284559"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Environment — temperature / humidity (unmeasured)",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16px",
+                      "color": "#284559"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

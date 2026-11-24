@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "60606060606060606061",
+  "position": {
+    "x": 40,
+    "y": 900,
+    "z": 2,
+    "height": 120,
+    "width": 1800,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Each point is one actual X-bar subgroup. Limits are phase-specific trial limits and support descriptive within-phase review only; do not use cross-phase alert counts as proof of causal stability improvement.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

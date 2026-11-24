@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "218d8b2ba32a4fafa93e",
+  "position": {
+    "x": 735,
+    "y": 185,
+    "z": 7000,
+    "height": 125,
+    "width": 320,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "DPMO Reduction %"
+                }
+              },
+              "queryRef": "inspections.DPMO Reduction %",
+              "nativeQueryRef": "DPMO Reduction %"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

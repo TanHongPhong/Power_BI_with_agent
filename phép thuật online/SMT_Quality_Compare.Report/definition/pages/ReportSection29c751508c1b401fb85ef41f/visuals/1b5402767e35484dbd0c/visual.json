@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "1b5402767e35484dbd0c",
+  "position": {
+    "x": 315,
+    "y": 195,
+    "z": 7000,
+    "height": 122,
+    "width": 255,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "Yield %"
+                }
+              },
+              "queryRef": "inspections.Yield %",
+              "nativeQueryRef": "Yield %"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

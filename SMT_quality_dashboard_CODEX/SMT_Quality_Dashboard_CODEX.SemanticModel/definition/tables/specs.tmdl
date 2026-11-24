@@ -1,0 +1,70 @@
+table specs
+	lineageTag: e3ab4a73-b3a3-44bc-8ce3-328e25b84669
+
+	column ctq
+		dataType: string
+		lineageTag: 6a7d7671-0b9e-4143-93eb-a1e3f3d772cc
+		summarizeBy: none
+		sourceColumn: ctq
+
+		annotation SummarizationSetBy = Automatic
+
+	column target
+		dataType: int64
+		formatString: 0
+		lineageTag: 262779eb-7741-4c86-bd60-f2c40485e1b0
+		summarizeBy: sum
+		sourceColumn: target
+
+		annotation SummarizationSetBy = Automatic
+
+	column lsl
+		dataType: int64
+		formatString: 0
+		lineageTag: ef30c6ec-c234-4ddc-99fc-162be0c0e3b7
+		summarizeBy: sum
+		sourceColumn: lsl
+
+		annotation SummarizationSetBy = Automatic
+
+	column usl
+		dataType: int64
+		formatString: 0
+		lineageTag: eb91bb6c-d40b-4845-9f62-cf1aa69b0802
+		summarizeBy: sum
+		sourceColumn: usl
+
+		annotation SummarizationSetBy = Automatic
+
+	column subgroup_size
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a5474ab-8e9d-4e2d-9490-75c575b1bb20
+		summarizeBy: sum
+		sourceColumn: subgroup_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunities_per_board
+		dataType: int64
+		formatString: 0
+		lineageTag: 013a2550-df29-41bd-95be-4003d1c721bd
+		summarizeBy: sum
+		sourceColumn: opportunities_per_board
+
+		annotation SummarizationSetBy = Automatic
+
+	partition specs = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\A UEH_UNIVERSITY\MONEY\Portfilio\marnufacturing_digitalization\Lean-Sigma-Learners-Portfolio\data\specs.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ctq", type text}, {"target", Int64.Type}, {"lsl", Int64.Type}, {"usl", Int64.Type}, {"subgroup_size", Int64.Type}, {"opportunities_per_board", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

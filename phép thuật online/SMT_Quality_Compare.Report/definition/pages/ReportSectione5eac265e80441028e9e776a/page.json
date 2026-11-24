@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSectione5eac265e80441028e9e776a",
+  "displayName": "04 · Defect & Root Cause",
+  "displayOption": "FitToPage",
+  "height": 1360,
+  "width": 1440
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "8cef072fcebe43128c38",
+  "position": {
+    "x": 35,
+    "y": 185,
+    "z": 5000,
+    "height": 125,
+    "width": 320,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "Yield Gain (pp)"
+                }
+              },
+              "queryRef": "inspections.Yield Gain (pp)",
+              "nativeQueryRef": "Yield Gain (pp)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

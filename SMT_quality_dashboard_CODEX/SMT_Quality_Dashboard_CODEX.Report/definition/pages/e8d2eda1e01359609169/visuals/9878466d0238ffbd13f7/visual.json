@@ -1,0 +1,274 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "9878466d0238ffbd13f7",
+  "position": {
+    "x": 966,
+    "y": 606,
+    "z": 4000,
+    "height": 474,
+    "width": 954,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "subgroup_id"
+                }
+              },
+              "queryRef": "SPC_XbarR.subgroup_id",
+              "nativeQueryRef": "subgroup_id",
+              "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "SPC_XbarR"
+                        }
+                      },
+                      "Property": "timestamp"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(SPC_XbarR.timestamp)",
+              "nativeQueryRef": "Earliest timestamp"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "SPC_XbarR"
+                        }
+                      },
+                      "Property": "week"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(SPC_XbarR.week)",
+              "nativeQueryRef": "Count of week"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "SPC_XbarR"
+                        }
+                      },
+                      "Property": "Sample_n"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(SPC_XbarR.Sample_n)",
+              "nativeQueryRef": "Sum of Sample_n"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R Point"
+                }
+              },
+              "queryRef": "SPC_XbarR.R Point",
+              "nativeQueryRef": "R Point"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R CL"
+                }
+              },
+              "queryRef": "SPC_XbarR.R CL",
+              "nativeQueryRef": "R CL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R LCL"
+                }
+              },
+              "queryRef": "SPC_XbarR.R LCL",
+              "nativeQueryRef": "R LCL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R UCL"
+                }
+              },
+              "queryRef": "SPC_XbarR.R UCL",
+              "nativeQueryRef": "R UCL"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "SPC_XbarR"
+                  }
+                },
+                "Property": "R Point"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "seriesLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'R Control Chart – Within-Subgroup Variation'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

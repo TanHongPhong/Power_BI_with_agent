@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "33333333333333333331",
+  "position": {
+    "x": 40,
+    "y": 100,
+    "z": 1,
+    "height": 500,
+    "width": 900,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "Measurements.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Mean Paste Height"
+                }
+              },
+              "queryRef": "Measurements.Mean Paste Height",
+              "nativeQueryRef": "Mean Paste Height"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measurements"
+                    }
+                  },
+                  "Property": "Overall Std"
+                }
+              },
+              "queryRef": "Measurements.Overall Std",
+              "nativeQueryRef": "Overall Std"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

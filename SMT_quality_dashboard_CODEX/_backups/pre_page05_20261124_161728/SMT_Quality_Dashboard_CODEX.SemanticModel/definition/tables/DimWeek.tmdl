@@ -1,0 +1,41 @@
+table DimWeek
+	lineageTag: 66668514-43a1-43ec-b680-79aa9ebfb3ad
+
+	column week
+		formatString: 0
+		lineageTag: dea10233-7d38-4cd3-9d89-95fb855ed9d5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		lineageTag: b7ebf92a-295b-420c-9c8c-f585138dd080
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [phase]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimWeek = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "week", INTEGER,
+				    "phase", STRING,
+				    {
+				        {1, "baseline"},
+				        {2, "baseline"},
+				        {3, "baseline"},
+				        {4, "baseline"},
+				        {5, "improved"},
+				        {6, "improved"},
+				        {7, "improved"},
+				        {8, "improved"}
+				    }
+				)
+
+	annotation PBI_Id = 2a36faaab12c49e1aa20f14c8a394111
+

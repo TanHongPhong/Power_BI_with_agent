@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "SMT_Quality_Dashboard_CODEX"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "92e4eded-2c1b-4d27-a584-cdd06d7aa5de"
+  }
+}

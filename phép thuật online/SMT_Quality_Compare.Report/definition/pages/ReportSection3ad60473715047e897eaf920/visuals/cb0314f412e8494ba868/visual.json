@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "cb0314f412e8494ba868",
+  "position": {
+    "x": 35,
+    "y": 361,
+    "z": 11000,
+    "height": 300,
+    "width": 1364,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "subgroup_id"
+                }
+              },
+              "queryRef": "SPC_XbarR.subgroup_id",
+              "nativeQueryRef": "subgroup_id",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "Xbar Point"
+                }
+              },
+              "queryRef": "SPC_XbarR.Xbar Point",
+              "nativeQueryRef": "Xbar Point"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "Xbar CL"
+                }
+              },
+              "queryRef": "SPC_XbarR.Xbar CL",
+              "nativeQueryRef": "Xbar CL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "Xbar UCL"
+                }
+              },
+              "queryRef": "SPC_XbarR.Xbar UCL",
+              "nativeQueryRef": "Xbar UCL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "Xbar LCL"
+                }
+              },
+              "queryRef": "SPC_XbarR.Xbar LCL",
+              "nativeQueryRef": "Xbar LCL"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'X̄ chart • paste deposit height (µm)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

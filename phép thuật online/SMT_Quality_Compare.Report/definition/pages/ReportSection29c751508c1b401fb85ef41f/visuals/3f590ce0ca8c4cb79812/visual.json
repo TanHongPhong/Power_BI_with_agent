@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "3f590ce0ca8c4cb79812",
+  "position": {
+    "x": 875,
+    "y": 195,
+    "z": 9000,
+    "height": 122,
+    "width": 255,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "defects"
+                    }
+                  },
+                  "Property": "Total Defects"
+                }
+              },
+              "queryRef": "defects.Total Defects",
+              "nativeQueryRef": "Total Defects"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

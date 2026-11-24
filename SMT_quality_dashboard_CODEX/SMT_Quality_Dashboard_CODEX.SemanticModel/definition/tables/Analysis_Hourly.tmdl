@@ -1,0 +1,147 @@
+table Analysis_Hourly
+	lineageTag: a29738e8-fc48-4351-a2af-3e8f69ba1643
+
+	column subgroup_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ec16823-1fcf-47eb-b73a-1033b5bb8d73
+		summarizeBy: none
+		sourceColumn: subgroup_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8990b4ce-4541-428b-8b24-5b091596e070
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		variation Variation
+			isDefault
+			relationship: 7fb32768-c670-4c8a-88a9-6051541abb85
+			defaultHierarchy: LocalDateTable_bc576480-3e4b-4f56-9799-f3c1f66efd16.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e18677a-fc19-48fa-9f5c-a6b6d9f2c8d8
+		summarizeBy: sum
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		dataType: string
+		lineageTag: 95e6ddee-809e-4d95-b4f7-2fb5f982ade4
+		summarizeBy: none
+		sourceColumn: phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column production_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ea8e5ba2-2653-4930-9568-344bf117fe8c
+		summarizeBy: none
+		sourceColumn: production_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Sample_n
+		dataType: int64
+		formatString: 0
+		lineageTag: 1178ed8f-7616-4acc-bc8e-e4b1ee44066c
+		summarizeBy: sum
+		sourceColumn: Sample_n
+
+		annotation SummarizationSetBy = Automatic
+
+	column Xbar
+		dataType: double
+		lineageTag: bec87d6c-8059-4ec1-a6e4-21a3364844bf
+		summarizeBy: sum
+		sourceColumn: Xbar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MaxHeight
+		dataType: double
+		lineageTag: 935b3141-9068-42dd-b101-5a148a44195d
+		summarizeBy: sum
+		sourceColumn: MaxHeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MinHeight
+		dataType: double
+		lineageTag: 796d18f1-d3ee-4f0b-b4f8-6624e3c3e25b
+		summarizeBy: sum
+		sourceColumn: MinHeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column range
+		dataType: double
+		lineageTag: d2a6e8b6-cd9c-444b-bd00-f931cd788cb3
+		summarizeBy: sum
+		sourceColumn: range
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'SPC_p_Hourly.Boards_n'
+		dataType: int64
+		formatString: 0
+		lineageTag: 46fb8a30-eed0-4850-b4f2-b21ee4908ba0
+		summarizeBy: sum
+		sourceColumn: SPC_p_Hourly.Boards_n
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SPC_p_Hourly.FAIL_n'
+		dataType: double
+		lineageTag: 5adbe831-fa1a-419a-8766-31401ef07a31
+		summarizeBy: sum
+		sourceColumn: SPC_p_Hourly.FAIL_n
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'SPC_p_Hourly.Custom'
+		dataType: double
+		lineageTag: 2af12362-8bed-471f-8d30-6523aa2d7ff8
+		summarizeBy: sum
+		sourceColumn: SPC_p_Hourly.Custom
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Analysis_Hourly = m
+		mode: import
+		source =
+				let
+				    Source = SPC_XbarR,
+				    #"Merged Queries" = Table.NestedJoin(Source, {"timestamp"}, SPC_p_Hourly, {"timestamp"}, "SPC_p_Hourly", JoinKind.LeftOuter),
+				    #"Expanded SPC_p_Hourly" = Table.ExpandTableColumn(#"Merged Queries", "SPC_p_Hourly", {"Boards_n", "FAIL_n", "Custom"}, {"SPC_p_Hourly.Boards_n", "SPC_p_Hourly.FAIL_n", "SPC_p_Hourly.Custom"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded SPC_p_Hourly",{{"SPC_p_Hourly.Custom", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

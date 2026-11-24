@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "c38bbfbb99cc41bf944f",
+  "position": {
+    "x": 1155,
+    "y": 195,
+    "z": 10000,
+    "height": 122,
+    "width": 255,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "defects"
+                    }
+                  },
+                  "Property": "DPMO"
+                }
+              },
+              "queryRef": "defects.DPMO",
+              "nativeQueryRef": "DPMO"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

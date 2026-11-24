@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "4c65dcdbe7b54d69b076",
+  "position": {
+    "x": 35,
+    "y": 1051,
+    "z": 16000,
+    "height": 245,
+    "width": 660,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "shift"
+                }
+              },
+              "queryRef": "inspections.shift",
+              "nativeQueryRef": "shift",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "defects"
+                    }
+                  },
+                  "Property": "Total Defects"
+                }
+              },
+              "queryRef": "defects.Total Defects",
+              "nativeQueryRef": "Total Defects"
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "defects"
+                    }
+                  },
+                  "Property": "defect_type"
+                }
+              },
+              "queryRef": "defects.defect_type",
+              "nativeQueryRef": "defect_type",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Check sheet • defect types by shift'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

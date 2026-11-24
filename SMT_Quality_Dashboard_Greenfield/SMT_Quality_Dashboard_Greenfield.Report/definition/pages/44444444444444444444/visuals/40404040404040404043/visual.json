@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "40404040404040404043",
+  "position": {
+    "x": 40,
+    "y": 1090,
+    "z": 5,
+    "height": 300,
+    "width": 900,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "subgroup_id"
+                }
+              },
+              "queryRef": "SPC XbarR.subgroup_id",
+              "nativeQueryRef": "subgroup_id",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "SPC XbarR.phase",
+              "nativeQueryRef": "phase"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "Xbar Point"
+                }
+              },
+              "queryRef": "SPC XbarR.Xbar Point",
+              "nativeQueryRef": "Xbar Point",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "R Point"
+                }
+              },
+              "queryRef": "SPC XbarR.R Point",
+              "nativeQueryRef": "R Point"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

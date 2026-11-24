@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "2740a7076d21407aa2d3",
+  "position": {
+    "x": 725,
+    "y": 371,
+    "z": 12000,
+    "height": 325,
+    "width": 674,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "QQ_Points"
+                    }
+                  },
+                  "Property": "measurement_id"
+                }
+              },
+              "queryRef": "QQ_Points.measurement_id",
+              "nativeQueryRef": "measurement_id",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "QQ_Points"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "QQ_Points.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "QQ_Points"
+                    }
+                  },
+                  "Property": "Theoretical Quantile"
+                }
+              },
+              "queryRef": "QQ_Points.Theoretical Quantile",
+              "nativeQueryRef": "Theoretical Quantile",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "QQ_Points"
+                    }
+                  },
+                  "Property": "Observed Quantile"
+                }
+              },
+              "queryRef": "QQ_Points.Observed Quantile",
+              "nativeQueryRef": "Observed Quantile"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Q–Q plot • observed vs normal theoretical quantiles'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

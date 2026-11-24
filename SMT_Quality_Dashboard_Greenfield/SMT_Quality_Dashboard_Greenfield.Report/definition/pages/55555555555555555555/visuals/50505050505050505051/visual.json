@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "50505050505050505051",
+  "position": {
+    "x": 980,
+    "y": 100,
+    "z": 3,
+    "height": 160,
+    "width": 400,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Inspections"
+                    }
+                  },
+                  "Property": "Yield Improvement (pp)"
+                }
+              },
+              "queryRef": "Inspections.Yield Improvement (pp)",
+              "nativeQueryRef": "Yield Improvement (pp)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Inspections"
+                    }
+                  },
+                  "Property": "Defective Rate %"
+                }
+              },
+              "queryRef": "Inspections.Defective Rate %",
+              "nativeQueryRef": "Defective Rate %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Defects"
+                    }
+                  },
+                  "Property": "DPMO Reduction"
+                }
+              },
+              "queryRef": "Defects.DPMO Reduction",
+              "nativeQueryRef": "DPMO Reduction"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

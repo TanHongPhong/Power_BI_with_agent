@@ -1,0 +1,115 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "0382d40d0a774d83af49",
+  "position": {
+    "x": 35,
+    "y": 1054,
+    "z": 15000,
+    "height": 97,
+    "width": 1364,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "subgroup_id"
+                }
+              },
+              "queryRef": "SPC_XbarR.subgroup_id",
+              "nativeQueryRef": "subgroup_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "week"
+                }
+              },
+              "queryRef": "SPC_XbarR.week",
+              "nativeQueryRef": "week"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "Xbar_Alarm"
+                }
+              },
+              "queryRef": "SPC_XbarR.Xbar_Alarm",
+              "nativeQueryRef": "Xbar_Alarm"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R_Alarm"
+                }
+              },
+              "queryRef": "SPC_XbarR.R_Alarm",
+              "nativeQueryRef": "R_Alarm"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "Either_Alarm"
+                }
+              },
+              "queryRef": "SPC_XbarR.Either_Alarm",
+              "nativeQueryRef": "Either_Alarm"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SPC signal flags by subgroup'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "9504aec54e204479989a",
+  "position": {
+    "x": 1085,
+    "y": 185,
+    "z": 8000,
+    "height": 125,
+    "width": 320,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "inspections"
+                    }
+                  },
+                  "Property": "Variation Reduction %"
+                }
+              },
+              "queryRef": "inspections.Variation Reduction %",
+              "nativeQueryRef": "Variation Reduction %"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+table SPC_p_Hourly
+	lineageTag: 9ec785b3-a3d4-4651-ba58-16b4b9cb1f1a
+
+	column timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: eb3b588b-ef97-40df-931b-f604b66230fd
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		variation Variation
+			isDefault
+			relationship: 77cd7c70-7b9d-41a3-a7c4-7662f30b3412
+			defaultHierarchy: LocalDateTable_ccef363a-c87d-4be1-88cc-57ac73e0e58a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: 23da07f5-dfdd-49b9-ab2f-43738ee88518
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		dataType: string
+		lineageTag: 7a5657c4-c389-494a-b636-4f8090a02dde
+		summarizeBy: none
+		sourceColumn: phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column production_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f80abf73-de03-4e25-8b10-62c09e2f0b70
+		summarizeBy: none
+		sourceColumn: production_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Boards_n
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a8ce229-30cf-4771-828f-15d2b9188181
+		summarizeBy: sum
+		sourceColumn: Boards_n
+
+		annotation SummarizationSetBy = Automatic
+
+	column FAIL_n
+		dataType: double
+		lineageTag: b60ae38f-7282-46d4-a5f9-c142b3c14c75
+		summarizeBy: sum
+		sourceColumn: FAIL_n
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Custom
+		dataType: string
+		lineageTag: 75d3fa96-f972-4b2f-a406-660af10ebcb6
+		summarizeBy: none
+		sourceColumn: Custom
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SPC_p_Hourly = m
+		mode: import
+		source =
+				let
+				    Source = inspections,
+				    #"Added Conditional Column" = Table.AddColumn(Source, "Custom", each if [disposition] = "FAIL" then 1 else 0),
+				    #"Grouped Rows" = Table.Group(#"Added Conditional Column", {"timestamp", "week", "phase", "production_date"}, {{"Boards_n", each Table.RowCount(_), Int64.Type}, {"FAIL_n", each List.Sum([Custom]), type number}}),
+				    #"Added Custom" = Table.AddColumn(#"Grouped Rows", "Custom", each if [Boards_n] = 0
+				then null
+				else [FAIL_n] / [Boards_n])
+				in
+				    #"Added Custom"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

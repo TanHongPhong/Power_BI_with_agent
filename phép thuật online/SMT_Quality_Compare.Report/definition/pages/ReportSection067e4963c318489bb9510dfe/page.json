@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSection067e4963c318489bb9510dfe",
+  "displayName": "05 · Improvement Assessment",
+  "displayOption": "FitToPage",
+  "height": 1530,
+  "width": 1440
+}

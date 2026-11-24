@@ -1,0 +1,88 @@
+table defects
+	lineageTag: 2744533f-1d29-4e69-9c75-92f519ca4be2
+
+	measure 'Total defects' = COUNTROWS(defects)
+		formatString: 0
+		lineageTag: 9b203bc9-a09a-4ca0-8df0-d83ea794f32c
+
+	measure 'Total Opportunities' = SUM(inspections[opportunities])
+		formatString: 0
+		lineageTag: 6ba382bb-99f1-4cbc-b122-1efa7f999197
+
+	measure DPMO = [Total defects]/[Total Opportunities]*10^6
+		lineageTag: 1b5126e9-b3fe-45ba-b981-92e846786582
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column defect_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 75a6659b-f0c8-4ff4-bbf1-84c2fcb4a4b1
+		summarizeBy: sum
+		sourceColumn: defect_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column board_id
+		dataType: int64
+		formatString: 0
+		lineageTag: cf9e71c1-9631-4a69-a855-c3161fb15315
+		summarizeBy: none
+		sourceColumn: board_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fffe9a79-242f-4a4c-a2c4-025848b7ade6
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		variation Variation
+			isDefault
+			relationship: df77aea5-f9e8-4636-9902-d9df99f63b93
+			defaultHierarchy: LocalDateTable_b39a42fc-006f-495d-8c67-86fb24ada160.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: fa7f7f9c-3567-4ca5-a309-945d3803d0c6
+		summarizeBy: sum
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		dataType: string
+		lineageTag: 892a750c-ee43-45bf-8ad4-b461f5c28c1d
+		summarizeBy: none
+		sourceColumn: phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column defect_type
+		dataType: string
+		lineageTag: f504d49f-263a-4b71-9528-7acfcf234e27
+		summarizeBy: none
+		sourceColumn: defect_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition defects = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\A UEH_UNIVERSITY\MONEY\Portfilio\marnufacturing_digitalization\Lean-Sigma-Learners-Portfolio\data\defects.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"defect_id", Int64.Type}, {"board_id", Int64.Type}, {"timestamp", type datetime}, {"week", Int64.Type}, {"phase", type text}, {"defect_type", type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

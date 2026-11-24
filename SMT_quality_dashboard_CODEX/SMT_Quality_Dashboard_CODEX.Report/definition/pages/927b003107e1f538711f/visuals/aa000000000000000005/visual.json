@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "aa000000000000000005",
+  "position": {
+    "x": 1424,
+    "y": 115,
+    "z": 5,
+    "height": 110,
+    "width": 440,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "Overall Std Reduction (um)"
+                }
+              },
+              "queryRef": "DimDate.Overall Std Reduction (um)",
+              "nativeQueryRef": "Overall Std Reduction (um)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Overall variation reduction (Ã‚Âµm)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

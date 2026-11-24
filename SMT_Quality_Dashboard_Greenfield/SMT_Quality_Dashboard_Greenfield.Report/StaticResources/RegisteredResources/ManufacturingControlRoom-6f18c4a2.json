@@ -1,0 +1,109 @@
+{
+  "name": "ManufacturingControlRoom-6f18c4a2.json",
+  "dataColors": [
+    "#22D3EE",
+    "#60A5FA",
+    "#34D399",
+    "#FBBF24",
+    "#FB7185",
+    "#A78BFA",
+    "#F97316",
+    "#14B8A6"
+  ],
+  "good": "#34D399",
+  "neutral": "#FBBF24",
+  "bad": "#FB7185",
+  "maximum": "#22D3EE",
+  "center": "#FBBF24",
+  "minimum": "#1E3A5F",
+  "null": "#64748B",
+  "background": "#07111F",
+  "foreground": "#E5EEF8",
+  "tableAccent": "#22D3EE",
+  "textClasses": {
+    "callout": {
+      "fontSize": 34,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#F8FAFC"
+    },
+    "title": {
+      "fontSize": 13,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#F8FAFC"
+    },
+    "header": {
+      "fontSize": 11,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#E5EEF8"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#CBD5E1"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#111C2D"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#27415F"
+              }
+            },
+            "radius": 8,
+            "width": 1
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": true,
+            "foreground": "#94A3B8",
+            "background": "#111C2D",
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "lineChart": {
+      "*": {
+        "legend": [
+          {
+            "position": "Top",
+            "labelColor": "#CBD5E1"
+          }
+        ],
+        "lineStyles": [
+          {
+            "showMarker": true,
+            "markerSize": 5,
+            "strokeWidth": 2
+          }
+        ]
+      }
+    },
+    "pivotTable": {
+      "*": {
+        "grid": [
+          {
+            "gridVertical": true,
+            "gridHorizontal": true
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "85072dd3ff4d32804375",
+  "position": {
+    "x": 1018,
+    "y": 126,
+    "z": 4000,
+    "height": 462,
+    "width": 902,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "measurement_id"
+                }
+              },
+              "queryRef": "Sum(measurements.measurement_id)",
+              "nativeQueryRef": "measurement_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "measurements.phase",
+              "nativeQueryRef": "phase"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "paste_height_um"
+                }
+              },
+              "queryRef": "Sum(measurements.paste_height_um)",
+              "nativeQueryRef": "paste_height_um"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "measurements"
+                  }
+                },
+                "Property": "measurement_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(measurement_id, phase, paste_height_um)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy.stats import norm\n\ndf = dataset[\n    [\"measurement_id\", \"phase\", \"paste_height_um\"]\n].dropna()\n\ndf[\"paste_height_um\"] = pd.to_numeric(\n    df[\"paste_height_um\"]\n)\n\nphases = sorted(df[\"phase\"].unique())\n\nfig, axes = plt.subplots(\n    1, len(phases),\n    figsize=(5 * len(phases), 4),\n    squeeze=False\n)\n\nfor ax, phase in zip(axes[0], phases):\n    x = np.sort(\n        df.loc[\n            df[\"phase\"] == phase,\n            \"paste_height_um\"\n        ].to_numpy()\n    )\n\n    n = len(x)\n    p = (np.arange(1, n + 1) - 0.5) / n\n\n    mu = np.mean(x)\n    sd = np.std(x, ddof=1)\n\n    theoretical = norm.ppf(p, loc=mu, scale=sd)\n\n    ax.scatter(theoretical, x, s=8, alpha=0.6)\n\n    limits = [\n        min(theoretical.min(), x.min()),\n        max(theoretical.max(), x.max())\n    ]\n\n    ax.plot(limits, limits, \"--\")\n\n    ax.set_title(f\"Q-Q Plot: {phase}\")\n    ax.set_xlabel(\"Theoretical Quantiles (µm)\")\n    ax.set_ylabel(\"Observed Quantiles (µm)\")\n    ax.grid(alpha=0.2)\n\nplt.tight_layout()\nplt.show()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

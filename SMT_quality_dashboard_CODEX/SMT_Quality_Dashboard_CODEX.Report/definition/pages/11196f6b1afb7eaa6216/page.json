@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "11196f6b1afb7eaa6216",
+  "displayName": "4. Defect & Root Cause Analysis",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b1483484319341889a51",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Analysis_Hourly"
+              }
+            },
+            "Property": "SPC_p_Hourly.Boards_n"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "c711ae3ccb3906cf3d9b",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "d99c6b20f7eff0d20084",
+        "boundFilter": "b1483484319341889a51",
+        "asAggregation": true,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Analysis_Hourly"
+              }
+            },
+            "Property": "SPC_p_Hourly.Boards_n"
+          }
+        }
+      }
+    ]
+  }
+}

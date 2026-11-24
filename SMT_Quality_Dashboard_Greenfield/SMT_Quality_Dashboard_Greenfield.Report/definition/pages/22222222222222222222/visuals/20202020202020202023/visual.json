@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "20202020202020202023",
+  "position": {
+    "x": 980,
+    "y": 630,
+    "z": 5,
+    "height": 400,
+    "width": 900,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "SPC XbarR.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "Total SPC Subgroups"
+                }
+              },
+              "queryRef": "SPC XbarR.Total SPC Subgroups",
+              "nativeQueryRef": "Total SPC Subgroups"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "Xbar Violations"
+                }
+              },
+              "queryRef": "SPC XbarR.Xbar Violations",
+              "nativeQueryRef": "Xbar Violations"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "R Violations"
+                }
+              },
+              "queryRef": "SPC XbarR.R Violations",
+              "nativeQueryRef": "R Violations"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "Unique Xbar-R Alerted Subgroups"
+                }
+              },
+              "queryRef": "SPC XbarR.Unique Xbar-R Alerted Subgroups",
+              "nativeQueryRef": "Unique Xbar-R Alerted Subgroups"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+table DimDate
+	lineageTag: 12f141d8-e814-4ff8-97f6-cb8f4d7184af
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 92627083-5016-4f3b-a3c0-dfa6b23cd995
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 29cb8334-b6ef-4acc-a517-4c3eb03e7eb9
+			defaultHierarchy: LocalDateTable_9b582e18-d4df-49c2-a482-d6d02315a281.'Date Hierarchy'
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		lineageTag: 470f9b7f-2813-4478-a966-d212010eb16b
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: e640f351-41e2-4f1a-a3fc-242181fa6278
+		summarizeBy: none
+		sourceColumn: Month
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    EncodedCsv = Text.Combine({
+				        "RGF0ZSxZZWFyLE1vbnRoCjIwMjUtMDEtMDYsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMDcsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMDgsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMDksMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTAsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTEsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTIsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTMsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTQsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTUsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTYsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTcsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTgsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMTksMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjAsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjEsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjIsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjMsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjQsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjUsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjYsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjcsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjgsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMjksMjAyNSwyMDI1LTAxCjIwMjUtMDEtMzAsMjAyNSwyMDI1LTAxCjIwMjUtMDEtMzEsMjAyNSwyMDI1LTAxCjIwMjUtMDItMDEsMjAyNSwyMDI1LTAyCjIwMjUtMDItMDIsMjAyNSwyMDI1LTAyCjIwMjUtMDItMDMsMjAyNSwyMDI1LTAyCjIwMjUtMDItMDQsMjAyNSwyMDI1LTAyCjIwMjUtMDItMDUsMjAyNSwyMDI1LTAyCjIwMjUtMDItMDYsMjAyNSwyMDI1LTAyCjIwMjUtMDItMDcsMjAyNSwyMDI1LTAyCjIwMjUtMDItMDgsMjAyNSwyMDI1LTAyCjIwMjUtMDItMDksMjAyNSwyMDI1LTAyCjIwMjUtMDItMTAsMjAyNSwyMDI1LTAyCjIwMjUtMDItMTEsMjAyNSwyMDI1LTAyCjIwMjUtMDItMTIsMjAyNSwyMDI1LTAyCjIwMjUtMDItMTMsMjAyNSwyMDI1LTAyCjIwMjUtMDItMTQsMjAyNSwyMDI1LTAyCjIwMjUtMDItMTUsMjAyNSwyMDI1LTAyCjIwMjUtMDItMTYsMjAyNSwyMDI1LTAyCjIwMjUtMDItMTcsMjAyNSwyMDI1LTAyCjIwMjUtMDItMTgsMjAyNSwyMDI1LTAyCjIwMjUtMDItMTksMjAyNSwyMDI1LTAyCjIwMjUtMDItMjAsMjAyNSwyMDI1LTAyCjIwMjUtMDItMjEsMjAyNSwyMDI1LTAyCjIwMjUtMDItMjIsMjAyNSwyMDI1LTAyCjIwMjUtMDItMjMsMjAyNSwyMDI1LTAyCjIwMjUtMDItMjQsMjAyNSwyMDI1LTAyCjIwMjUtMDItMjUsMjAyNSwyMDI1LTAyCjIwMjUtMDItMjYsMjAyNSwyMDI1LTAyCjIwMjUtMDItMjcsMjAyNSwyMDI1LTAyCjIwMjUtMDItMjgsMjAyNSwyMDI1LTAyCg=="
+				    }),
+				    CsvSource = Csv.Document(Binary.FromText(EncodedCsv, BinaryEncoding.Base64), [Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(CsvSource, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(PromotedHeaders, {{"Date", type date},{"Year", Int64.Type},{"Month", type text}}, "en-US")
+				in
+				    Typed
+

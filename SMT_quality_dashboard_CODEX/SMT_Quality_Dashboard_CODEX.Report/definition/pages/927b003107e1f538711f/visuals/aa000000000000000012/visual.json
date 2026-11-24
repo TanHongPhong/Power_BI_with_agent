@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "aa000000000000000012",
+  "position": {
+    "x": 32,
+    "y": 1150,
+    "z": 12,
+    "height": 330,
+    "width": 1832,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Control Plan (proposed actions)",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Solder Paste Height — Xbar-R Control Chart: investigate out-of-control signals and verify printing process conditions.  PCB Defective Proportion — p-Chart: review abnormal inspection periods and affected PCB lots.  Stencil Cleaning — SOP Compliance Review: verify execution of the stencil cleaning procedure.  Process Capability — Cp, Cpk, Pp, Ppk: evaluate capability after confirming process stability.  Defect Prioritization — Pareto Analysis: prioritize recurring and high-impact defect categories.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Key Findings",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "This page uses live model measures to compare yield, defective proportion, DPMO, variation, mean paste height and capability. Results describe synthetic manufacturing data only and do not establish real-world causality. SPC limits are trial limits calculated separately by phase; fewer signals are descriptive within phase and do not prove improved operational stability under a common fixed reference. The source data has no complete stencil-cleaning execution log, so no SOP rate, approval, maintenance, or accountability claim is shown.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Method note: missing alarm evaluations remain blank in the new unique-alert measure; they are not silently converted to zero. A subgroup violating both Xbar and R is counted once.",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "fontStyle": "italic"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+/// Conformed phase dimension for report slicers across manufacturing fact tables.
+table Phase
+	lineageTag: 5c8e3add-9c0c-4ade-8330-5ca5a8411d59
+
+	column Phase
+		dataType: string
+		isKey
+		isNullable: false
+		lineageTag: 617a841d-3b16-4fc0-9dc0-0c726054731f
+		sourceColumn: Phase
+
+	partition Phase = m
+		mode: import
+		source = #table(type table [Phase = text], {{"Baseline"}, {"Improved"}})
+

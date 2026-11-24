@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "a311761318544bf4be11",
+  "position": {
+    "x": 735,
+    "y": 360,
+    "z": 12000,
+    "height": 340,
+    "width": 660,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Analysis_Hourly"
+                    }
+                  },
+                  "Property": "subgroup_id"
+                }
+              },
+              "queryRef": "Analysis_Hourly.subgroup_id",
+              "nativeQueryRef": "subgroup_id",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Analysis_Hourly"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "Analysis_Hourly.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Analysis_Hourly"
+                    }
+                  },
+                  "Property": "Mean Paste Height Hour"
+                }
+              },
+              "queryRef": "Analysis_Hourly.Mean Paste Height Hour",
+              "nativeQueryRef": "Mean Paste Height Hour",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Analysis_Hourly"
+                    }
+                  },
+                  "Property": "PCB Fail Share Hour"
+                }
+              },
+              "queryRef": "Analysis_Hourly.PCB Fail Share Hour",
+              "nativeQueryRef": "PCB Fail Share Hour"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Hourly paste height vs PCB defective proportion'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

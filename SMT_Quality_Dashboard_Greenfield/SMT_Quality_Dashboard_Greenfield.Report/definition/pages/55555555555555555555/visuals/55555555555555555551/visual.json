@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "55555555555555555551",
+  "position": {
+    "x": 40,
+    "y": 100,
+    "z": 1,
+    "height": 500,
+    "width": 900,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Inspections"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "Inspections.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Inspections"
+                    }
+                  },
+                  "Property": "Yield %"
+                }
+              },
+              "queryRef": "Inspections.Yield %",
+              "nativeQueryRef": "Yield %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Defects"
+                    }
+                  },
+                  "Property": "DPMO by Phase"
+                }
+              },
+              "queryRef": "Defects.DPMO by Phase",
+              "nativeQueryRef": "DPMO by Phase"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

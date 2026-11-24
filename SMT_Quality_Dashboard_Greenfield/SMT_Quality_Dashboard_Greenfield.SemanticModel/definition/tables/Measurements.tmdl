@@ -1,0 +1,118 @@
+table Measurements
+	lineageTag: 83751f77-97e4-44b2-93f6-4d92910e5272
+
+	measure 'Mean Paste Height' = AVERAGE(Measurements[paste_height_um])
+		formatString: 0.00
+		lineageTag: aa017db1-182f-4628-ac5a-b38131dbf0ef
+
+	measure 'Overall Std' = STDEV.S(Measurements[paste_height_um])
+		formatString: 0.00
+		lineageTag: 62689ba9-9211-44d4-9613-70022bfbe3f8
+
+	measure 'Total Measurements' = COUNTROWS(Measurements)
+		formatString: #,##0
+		lineageTag: e954d3b8-7a14-4c49-b862-160c50b01b7e
+
+	measure Pp = DIVIDE(Specifications[USL Target]-Specifications[LSL Target], 6*[Overall Std])
+		formatString: 0.00
+		lineageTag: 2d885376-7760-43e7-8db1-c06a77959560
+
+	measure Ppk = MIN(DIVIDE(Specifications[USL Target]-[Mean Paste Height],3*[Overall Std]),DIVIDE([Mean Paste Height]-Specifications[LSL Target],3*[Overall Std]))
+		formatString: 0.00
+		lineageTag: 7d23b85d-c1d1-4178-aedc-dc3e13109cf1
+
+	measure 'Within Std' = DIVIDE(AVERAGE('SPC XbarR'[Range]), 2.326)
+		formatString: 0.00
+		lineageTag: df825e33-ce45-4141-b42e-3b2bf6a4ccd8
+
+	measure Cp = DIVIDE(Specifications[USL Target]-Specifications[LSL Target], 6*[Within Std])
+		formatString: 0.00
+		lineageTag: 75002aaa-19ed-4bf7-aecd-445b2cdc2038
+
+	measure Cpk = MIN(DIVIDE(Specifications[USL Target]-[Mean Paste Height],3*[Within Std]),DIVIDE([Mean Paste Height]-Specifications[LSL Target],3*[Within Std]))
+		formatString: 0.00
+		lineageTag: 98f06b8f-e13e-4805-ab00-ab9f978318ac
+
+	column measurement_id
+		dataType: int64
+		lineageTag: 658419b0-8b08-4407-a4ce-b603c39e77b0
+		summarizeBy: sum
+		sourceColumn: measurement_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		lineageTag: 8130f581-d951-4163-9149-b7d85d8b1fa1
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		variation Variation
+			isDefault
+			relationship: cbcd8d47-63ee-4645-81b1-8978cc4a67b6
+			defaultHierarchy: LocalDateTable_7ffb63f6-dbbd-4806-87ce-b7fecc46338b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column subgroup_id
+		dataType: int64
+		lineageTag: a62b86ca-d232-487a-b9d3-a322a423c5b4
+		summarizeBy: sum
+		sourceColumn: subgroup_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		lineageTag: cf1b8dc7-7624-40e2-a98e-ada15bba527c
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		dataType: string
+		lineageTag: ae459c9d-499c-4579-a7a9-a018ff6610e8
+		summarizeBy: none
+		sourceColumn: phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift
+		dataType: string
+		lineageTag: 5a036f37-46a2-4475-acfa-3b36979daafa
+		summarizeBy: none
+		sourceColumn: shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column operator
+		dataType: string
+		lineageTag: 7f9d17b7-8432-426b-a3df-0312ad1cc81b
+		summarizeBy: none
+		sourceColumn: operator
+
+		annotation SummarizationSetBy = Automatic
+
+	column paste_height_um
+		dataType: double
+		lineageTag: d7a76887-48a3-4722-bff1-80efe7f5a3bd
+		summarizeBy: sum
+		sourceColumn: paste_height_um
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Two-micrometer paste-height bin for the capability distribution.
+	column 'Paste Height Bin' = FLOOR(Measurements[paste_height_um], 2)
+		dataType: decimal
+		lineageTag: be95fb9d-1bee-4a55-bf31-e3539e18da1a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Measurements = m
+		mode: import
+		source = let Source = Csv.Document(File.Contents("D:\\A UEH_UNIVERSITY\\MONEY\\Portfilio\\marnufacturing_digitalization\\Lean-Sigma-Learners-Portfolio\\data\\measurements.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]), Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]), Typed = Table.TransformColumnTypes(Promoted, {{"measurement_id", Int64.Type},{"timestamp", type datetime},{"subgroup_id", Int64.Type},{"week", Int64.Type},{"phase", type text},{"shift", type text},{"operator", type text},{"paste_height_um", type number}}) in Typed
+

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "971563c25cdb476bac23",
+  "position": {
+    "x": 35,
+    "y": 371,
+    "z": 11000,
+    "height": 325,
+    "width": 650,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "paste_bin_2um"
+                }
+              },
+              "queryRef": "measurements.paste_bin_2um",
+              "nativeQueryRef": "paste_bin_2um",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Total Measurements"
+                }
+              },
+              "queryRef": "measurements.Total Measurements",
+              "nativeQueryRef": "Total Measurements"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Paste height frequency • 2 µm intervals'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

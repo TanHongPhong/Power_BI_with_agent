@@ -1,0 +1,32 @@
+{
+  "name": "SMT Quality — Editorial",
+  "dataColors": [
+    "#127B82",
+    "#F59E0B",
+    "#52759B",
+    "#D65C5C",
+    "#53734C",
+    "#8A70B7",
+    "#9D6A4A",
+    "#2C8986"
+  ],
+  "background": "#F6F8FA",
+  "foreground": "#12283F",
+  "tableAccent": "#127B82",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11,
+      "color": "#284559"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 14,
+      "color": "#12283F"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "color": "#12283F"
+    }
+  }
+}

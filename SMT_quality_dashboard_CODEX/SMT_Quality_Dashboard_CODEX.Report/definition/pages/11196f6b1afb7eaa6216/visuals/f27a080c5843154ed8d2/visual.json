@@ -1,0 +1,291 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "f27a080c5843154ed8d2",
+  "position": {
+    "x": 984,
+    "y": 544,
+    "z": 4003,
+    "height": 506,
+    "width": 924,
+    "tabOrder": 4003
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Analysis_Hourly"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "timestamp"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Year"
+                }
+              },
+              "queryRef": "Analysis_Hourly.timestamp.Variation.Date Hierarchy.Year",
+              "nativeQueryRef": "timestamp Year",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Analysis_Hourly"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "timestamp"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Quarter"
+                }
+              },
+              "queryRef": "Analysis_Hourly.timestamp.Variation.Date Hierarchy.Quarter",
+              "nativeQueryRef": "timestamp Quarter",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Analysis_Hourly"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "timestamp"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Month"
+                }
+              },
+              "queryRef": "Analysis_Hourly.timestamp.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "timestamp Month",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Analysis_Hourly"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "timestamp"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Day"
+                }
+              },
+              "queryRef": "Analysis_Hourly.timestamp.Variation.Date Hierarchy.Day",
+              "nativeQueryRef": "timestamp Day",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Analysis_Hourly"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "Analysis_Hourly.phase",
+              "nativeQueryRef": "phase"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Analysis_Hourly"
+                        }
+                      },
+                      "Property": "SPC_p_Hourly.Boards_n"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Analysis_Hourly.SPC_p_Hourly.Boards_n)",
+              "nativeQueryRef": "Sum of SPC_p_Hourly.Boards_n"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Analysis_Hourly"
+                        }
+                      },
+                      "Property": "week"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Analysis_Hourly.week)",
+              "nativeQueryRef": "Sum of week"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Analysis_Hourly"
+                        }
+                      },
+                      "Property": "SPC_p_Hourly.FAIL_n"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Analysis_Hourly.SPC_p_Hourly.FAIL_n)",
+              "nativeQueryRef": "Sum of SPC_p_Hourly.FAIL_n"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Analysis_Hourly"
+                        }
+                      },
+                      "Property": "Xbar"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(Analysis_Hourly.Xbar)",
+              "nativeQueryRef": "Average of Xbar",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Analysis_Hourly"
+                        }
+                      },
+                      "Property": "SPC_p_Hourly.Custom"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(Analysis_Hourly.SPC_p_Hourly.Custom)",
+              "nativeQueryRef": "Average of SPC_p_Hourly.Custom"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "trend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "displayName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Trend line 1'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Paste Height vs Defective Rate'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

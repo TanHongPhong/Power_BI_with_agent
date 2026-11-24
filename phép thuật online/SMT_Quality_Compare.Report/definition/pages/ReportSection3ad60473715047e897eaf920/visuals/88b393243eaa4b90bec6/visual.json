@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "88b393243eaa4b90bec6",
+  "position": {
+    "x": 730,
+    "y": 682,
+    "z": 13000,
+    "height": 320,
+    "width": 668,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_p_Hourly"
+                    }
+                  },
+                  "Property": "timestamp"
+                }
+              },
+              "queryRef": "SPC_p_Hourly.timestamp",
+              "nativeQueryRef": "timestamp",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_p_Hourly"
+                    }
+                  },
+                  "Property": "p Point"
+                }
+              },
+              "queryRef": "SPC_p_Hourly.p Point",
+              "nativeQueryRef": "p Point"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_p_Hourly"
+                    }
+                  },
+                  "Property": "p CL"
+                }
+              },
+              "queryRef": "SPC_p_Hourly.p CL",
+              "nativeQueryRef": "p CL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_p_Hourly"
+                    }
+                  },
+                  "Property": "p UCL"
+                }
+              },
+              "queryRef": "SPC_p_Hourly.p UCL",
+              "nativeQueryRef": "p UCL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_p_Hourly"
+                    }
+                  },
+                  "Property": "p LCL"
+                }
+              },
+              "queryRef": "SPC_p_Hourly.p LCL",
+              "nativeQueryRef": "p LCL"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'p chart • PCB defective proportion'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

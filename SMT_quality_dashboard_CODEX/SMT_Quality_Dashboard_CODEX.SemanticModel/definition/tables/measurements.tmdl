@@ -1,0 +1,196 @@
+table measurements
+	lineageTag: dbd56c80-a999-435b-a4e0-97bdc9762fe4
+
+	measure 'Mean Height' =
+			
+			AVERAGE(measurements[paste_height_um])
+		lineageTag: bef73b48-4836-42d9-86e6-dc64f2602f2e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Overall Std' =
+			
+			STDEV.S(measurements[paste_height_um])
+		lineageTag: 114dc21d-e196-4297-902f-1939224c1da3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Min Height' =
+			
+			MIN(measurements[paste_height_um])
+		lineageTag: 03de925b-7365-4c6d-b3e0-ff0354aab390
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Height' =
+			
+			MAX(measurements[paste_height_um])
+		lineageTag: 198a9a5b-a570-4737-9777-29cf3287dbcf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Measurements' =
+			
+			COUNTROWS(measurements)
+		formatString: 0
+		lineageTag: 67ec3ee1-2b1c-4489-9df9-93d3da9b99fb
+
+	measure LSL = SELECTEDVALUE(specs[lsl])
+		formatString: 0
+		lineageTag: 3fc86399-9655-4576-9534-e60b0fb5b468
+
+	measure USL = SELECTEDVALUE(specs[usl])
+		formatString: 0
+		lineageTag: ba12a463-13bc-4360-921d-885dca04cfd9
+
+	measure Target = SELECTEDVALUE(specs[target])
+		formatString: 0
+		lineageTag: fdbead97-03ef-4a01-84dc-14738c3e5cf2
+
+	column measurement_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 632894de-6fc6-48a6-a6b7-77d402a0e158
+		summarizeBy: sum
+		sourceColumn: measurement_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8cf6647a-4232-4e2f-af4b-dd8a74e6e14d
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		variation Variation
+			isDefault
+			relationship: 1590d2c6-8403-407d-83f7-253cf14b9916
+			defaultHierarchy: LocalDateTable_7464daa0-8787-4294-8985-8de247ef2092.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column subgroup_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 13ac497b-f13b-4e9c-8200-20f8f6c92a79
+		summarizeBy: sum
+		sourceColumn: subgroup_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: da57b9b1-14b2-4617-b96c-3e134556b7fa
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		dataType: string
+		lineageTag: c4a05036-eb5f-4d4a-80f7-6aaa6b4d7ef8
+		summarizeBy: none
+		sourceColumn: phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift
+		dataType: string
+		lineageTag: 174b6624-74b5-4219-a88f-7cbdf571b745
+		summarizeBy: none
+		sourceColumn: shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column operator
+		dataType: string
+		lineageTag: de652075-4589-4115-8893-4decf7502ddf
+		summarizeBy: none
+		sourceColumn: operator
+
+		annotation SummarizationSetBy = Automatic
+
+	column paste_height_um
+		dataType: double
+		lineageTag: f4a5ab7c-484b-4ca0-99de-ae8cb5a1ab9b
+		summarizeBy: sum
+		sourceColumn: paste_height_um
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"measurements","TableItemName":"paste_height_um (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column production_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d1ca3b33-0752-4bb6-9be3-c42509c08297
+		summarizeBy: none
+		sourceColumn: production_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'paste_height_um (bins)' =
+			IF(
+				ISBLANK('measurements'[paste_height_um]),
+				BLANK(),
+				IF(
+					'measurements'[paste_height_um] >= 0,
+					ROUNDDOWN('measurements'[paste_height_um] / 2, 0) * 2,
+					ROUNDUP('measurements'[paste_height_um] / 2, 0) * 2
+				)
+			)
+		lineageTag: 7627568c-5f39-4e3c-b562-1c056b9ff1fb
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "measurements"
+				          }
+				        },
+				        "Property": "paste_height_um"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 2.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"m","Entity":"measurements"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"m"}},"Property":"paste_height_um"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"m"}},"Property":"paste_height_um"}},"Size":2.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition measurements = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\A UEH_UNIVERSITY\MONEY\Portfilio\marnufacturing_digitalization\Lean-Sigma-Learners-Portfolio\data\measurements.csv"),[Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"measurement_id", Int64.Type}, {"timestamp", type datetime}, {"subgroup_id", Int64.Type}, {"week", Int64.Type}, {"phase", type text}, {"shift", type text}, {"operator", type text}, {"paste_height_um", type number}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "date", each Date.From([timestamp])),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"date", type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"date", "production_date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

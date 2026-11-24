@@ -1,0 +1,35 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["measurements","inspections","defects","specs","SPC_XbarR","SPC_p_Hourly","Analysis_Hourly","QQ_Points","DimWeek","DimDate","DQ_Checks"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table measurements
+ref table inspections
+ref table defects
+ref table specs
+ref table SPC_XbarR
+ref table SPC_p_Hourly
+ref table Analysis_Hourly
+ref table QQ_Points
+ref table DimWeek
+ref table DimDate
+ref table DQ_Checks
+ref table DateTableTemplate_0f20f067-6991-4fcc-b153-07d7cf314853
+ref table LocalDateTable_09e7c01a-d1c6-4c39-b00d-4ff0508e2d4c
+ref table LocalDateTable_40baefd9-2812-48f5-8374-d4e287e2f54e
+ref table LocalDateTable_af903dcc-c9d6-40f2-9fb6-3fec8a6451d8
+ref table LocalDateTable_35932184-f12a-445e-8b23-196de2071834
+ref table LocalDateTable_3d35dcba-2668-498a-bbee-1626fef7645b
+ref table LocalDateTable_e6967ce4-dce7-4b0b-b1ba-36868be2124d
+ref table LocalDateTable_9b582e18-d4df-49c2-a482-d6d02315a281
+

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "50505050505050505052",
+  "position": {
+    "x": 40,
+    "y": 1050,
+    "z": 4,
+    "height": 600,
+    "width": 1800,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Proposed control actions: monitor solder paste height with Xbar-R charts; review abnormal PCB defect periods using the p-chart; verify stencil-cleaning procedure execution; evaluate Cp/Cpk/Pp/Ppk only after stability review; prioritize recurring high-impact defect categories with Pareto. These are proposed actions; the synthetic source data contains no stencil-cleaning execution, maintenance, approval, or operator-accountability records.",
+                    "textStyle": {
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

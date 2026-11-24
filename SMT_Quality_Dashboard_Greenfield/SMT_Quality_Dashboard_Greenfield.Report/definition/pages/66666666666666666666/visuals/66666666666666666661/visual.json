@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "66666666666666666661",
+  "position": {
+    "x": 40,
+    "y": 110,
+    "z": 3,
+    "height": 750,
+    "width": 1800,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "timestamp"
+                }
+              },
+              "queryRef": "SPC XbarR.timestamp",
+              "nativeQueryRef": "timestamp",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "Xbar Point"
+                }
+              },
+              "queryRef": "SPC XbarR.Xbar Point",
+              "nativeQueryRef": "Xbar Point"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "Xbar CL"
+                }
+              },
+              "queryRef": "SPC XbarR.Xbar CL",
+              "nativeQueryRef": "Xbar CL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "Xbar UCL"
+                }
+              },
+              "queryRef": "SPC XbarR.Xbar UCL",
+              "nativeQueryRef": "Xbar UCL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC XbarR"
+                    }
+                  },
+                  "Property": "Xbar LCL"
+                }
+              },
+              "queryRef": "SPC XbarR.Xbar LCL",
+              "nativeQueryRef": "Xbar LCL"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "a0b1165ea0dce88a3891",
+  "position": {
+    "x": 1018,
+    "y": 588,
+    "z": 5000,
+    "height": 492,
+    "width": 902,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "measurement_id"
+                }
+              },
+              "queryRef": "Sum(measurements.measurement_id)",
+              "nativeQueryRef": "measurement_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "measurements.phase",
+              "nativeQueryRef": "phase"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "paste_height_um"
+                }
+              },
+              "queryRef": "Sum(measurements.paste_height_um)",
+              "nativeQueryRef": "paste_height_um"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "measurements"
+                  }
+                },
+                "Property": "measurement_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'import pandas as pd\nimport matplotlib.pyplot as plt\n\ndf = dataset[\n    [\"measurement_id\", \"phase\", \"paste_height_um\"]\n].dropna()\n\nphases = sorted(df[\"phase\"].unique())\n\nvalues = [\n    df.loc[\n        df[\"phase\"] == phase,\n        \"paste_height_um\"\n    ].to_numpy()\n    for phase in phases\n]\n\nfig, ax = plt.subplots(figsize=(8, 4))\n\nax.boxplot(\n    values,\n    showmeans=True,\n    showfliers=True\n)\n\nax.set_xticks(range(1, len(phases) + 1))\nax.set_xticklabels(phases)\n\nax.set_ylabel(\"Paste Height (µm)\")\nax.set_title(\"Paste Height Distribution by Phase\")\nax.grid(axis=\"y\", alpha=0.2)\n\nplt.tight_layout()\nplt.show()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

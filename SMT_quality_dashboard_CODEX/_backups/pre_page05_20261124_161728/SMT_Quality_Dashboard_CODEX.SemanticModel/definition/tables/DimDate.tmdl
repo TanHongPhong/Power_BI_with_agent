@@ -1,0 +1,416 @@
+table DimDate
+	lineageTag: 2aaad89e-e4a5-4f47-8c54-28eb35185685
+
+	measure 'p Point' =
+			
+			DIVIDE(
+			    SUM(SPC_p_Hourly[FAIL_n]),
+			    SUM(SPC_p_Hourly[Boards_n])
+			)
+		lineageTag: b965e817-598e-4845-8f50-2a264980c318
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'p CL' =
+			
+			VAR CurrentPhase =
+			    SELECTEDVALUE(SPC_p_Hourly[phase])
+			RETURN
+			IF(
+			    ISBLANK(CurrentPhase),
+			    BLANK(),
+			    CALCULATE(
+			        DIVIDE(
+			            SUM(SPC_p_Hourly[FAIL_n]),
+			            SUM(SPC_p_Hourly[Boards_n])
+			        ),
+			        REMOVEFILTERS(SPC_p_Hourly),
+			        REMOVEFILTERS(DimWeek),
+			        REMOVEFILTERS(DimDate),
+			        SPC_p_Hourly[phase] = CurrentPhase
+			    )
+			)
+		lineageTag: 04880248-ba45-475c-bf52-f46397b637ab
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'p UCL' =
+			
+			VAR pbar = [p CL]
+			VAR n = SELECTEDVALUE(SPC_p_Hourly[Boards_n])
+			RETURN
+			IF(
+			    ISBLANK(pbar) || ISBLANK(n) || n = 0,
+			    BLANK(),
+			    MIN(
+			        1,
+			        pbar + 3 * SQRT(pbar * (1 - pbar) / n)
+			    )
+			)
+		lineageTag: d324ae0b-27e3-444e-a2ce-cdcbb4ac43d5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'p LCL' =
+			
+			VAR pbar = [p CL]
+			VAR n = SELECTEDVALUE(SPC_p_Hourly[Boards_n])
+			RETURN
+			IF(
+			    ISBLANK(pbar) || ISBLANK(n) || n = 0,
+			    BLANK(),
+			    MAX(
+			        0,
+			        pbar - 3 * SQRT(pbar * (1 - pbar) / n)
+			    )
+			)
+		lineageTag: f82629c8-812a-4f4c-83dc-f463059557df
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Xbar Alarm' =
+			
+			VAR Actual = [Xbar Point]
+			RETURN
+			IF(
+			    ISBLANK(Actual) || ISBLANK([Xbar CL]),
+			    BLANK(),
+			    IF(
+			        Actual > [Xbar UCL]
+			            || Actual < [Xbar LCL],
+			        1,
+			        0
+			    )
+			)
+		formatString: 0
+		lineageTag: aa741d7c-2af4-4253-b3ac-86b12019359c
+
+	measure 'R Alarm' =
+			
+			VAR Actual = [R Point]
+			RETURN
+			IF(
+			    ISBLANK(Actual) || ISBLANK([R CL]),
+			    BLANK(),
+			    IF(
+			        Actual > [R UCL]
+			            || Actual < [R LCL],
+			        1,
+			        0
+			    )
+			)
+		formatString: 0
+		lineageTag: df9e5b58-e672-43ac-aeaf-a8ab2f225eaf
+
+	measure 'p Alarm' =
+			
+			VAR Actual = [p Point]
+			RETURN
+			IF(
+			    ISBLANK(Actual) || ISBLANK([p CL]),
+			    BLANK(),
+			    IF(
+			        Actual > [p UCL]
+			            || Actual < [p LCL],
+			        1,
+			        0
+			    )
+			)
+		formatString: 0
+		lineageTag: 23cc37fd-aea4-42cf-967e-cae0f477764c
+
+	measure 'Xbar Violations' =
+			
+			COALESCE(
+			    SUMX(
+			        VALUES(SPC_XbarR[subgroup_id]),
+			        [Xbar Alarm]
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 772514db-8d30-4f04-a2cc-849614873886
+
+	measure 'R Violations' =
+			
+			COALESCE(
+			    SUMX(
+			        VALUES(SPC_XbarR[subgroup_id]),
+			        [R Alarm]
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: ad293472-2c61-481a-9a09-d497d3ba0112
+
+	measure 'p Violations' =
+			
+			COALESCE(
+			    SUMX(
+			        VALUES(SPC_p_Hourly[timestamp]),
+			        [p Alarm]
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: ed2684a5-09a5-4f4f-aa6d-4ef9de640607
+
+	measure 'Total SPC Subgroups' =
+			
+			COUNTROWS(SPC_XbarR)
+		formatString: 0
+		lineageTag: 826ec799-6e72-4224-a419-6fbc1d60fd64
+
+	measure 'XbarR Alarm' =
+			
+			IF(
+			    [Xbar Alarm] = 1
+			        || [R Alarm] = 1,
+			    1,
+			    0
+			)
+		formatString: 0
+		lineageTag: f14aa600-9451-4c5e-a716-68e49aca1204
+
+	measure 'Within Std' =
+			
+			VAR CurrentPhase =
+			    SELECTEDVALUE(DimWeek[phase])
+			RETURN
+			IF(
+			    ISBLANK(CurrentPhase),
+			    BLANK(),
+			    DIVIDE(
+			        AVERAGE(SPC_XbarR[range]),
+			        2.326
+			    )
+			)
+		lineageTag: 51cf5d75-effc-49e2-a735-3313a1fcd1ac
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure CPL =
+			
+			DIVIDE(
+			    [Mean Height] - [LSL],
+			    3 * [Within Std]
+			)
+		lineageTag: bc3c61db-c836-4a4b-93b0-171524bd9971
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure CPU =
+			
+			DIVIDE(
+			    [USL] - [Mean Height],
+			    3 * [Within Std]
+			)
+		lineageTag: 1848a2e4-86c5-4eb0-88f9-c7a40b13213d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Cpk =
+			
+			IF(
+			    ISBLANK([CPU]) || ISBLANK([CPL]),
+			    BLANK(),
+			    MIN([CPU], [CPL])
+			)
+		lineageTag: 8468e527-d81c-4034-bc1d-a0d442d26fba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Pp =
+			
+			DIVIDE(
+			    [USL] - [LSL],
+			    6 * [Overall Std]
+			)
+		lineageTag: 13d94147-4e08-449c-9594-6a2818e0f63b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PPU =
+			
+			DIVIDE(
+			    [USL] - [Mean Height],
+			    3 * [Overall Std]
+			)
+		lineageTag: f538a2bb-20bc-49cd-aa58-b30b491cf3ef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PPL =
+			
+			DIVIDE(
+			    [Mean Height] - [LSL],
+			    3 * [Overall Std]
+			)
+		lineageTag: 7dbdbbe7-f179-448e-860d-d02bdeee94f7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Ppk =
+			
+			IF(
+			    ISBLANK([PPU]) || ISBLANK([PPL]),
+			    BLANK(),
+			    MIN([PPU], [PPL])
+			)
+		lineageTag: 0a621a39-21fd-4061-9d6c-0b9d9183345e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Out of Spec Measurements' =
+			
+			VAR Lower = [LSL]
+			VAR Upper = [USL]
+			RETURN
+			CALCULATE(
+			    COUNTROWS(measurements),
+			    FILTER(
+			        measurements,
+			        measurements[paste_height_um] < Lower
+			            || measurements[paste_height_um] > Upper
+			    )
+			)
+		formatString: 0
+		lineageTag: ba0fb549-064a-46f9-b92b-d4f1585ae822
+
+	measure 'Out of Spec %' =
+			
+			DIVIDE(
+			    [Out of Spec Measurements],
+			    [Total Measurements]
+			)
+		lineageTag: 347b0d9b-f95c-411d-83ae-cb262798e19b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Cp =
+			
+			DIVIDE(
+			    [USL] - [LSL],
+			    6 * [Within Std]
+			)
+		lineageTag: 5469d5b6-9c9b-4ac9-9de9-d382cd3980ee
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Defect Contribution %' =
+			
+			DIVIDE(
+			    [Total Defects],
+			    CALCULATE(
+			        [Total Defects],
+			        ALLSELECTED(defects[defect_type])
+			    )
+			)
+		lineageTag: 24445b25-90b3-4070-b5b6-8e9de2cfa0d4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pareto Cumulative Defects' =
+			
+			VAR CurrentCount = [Total Defects]
+			RETURN
+			IF(
+			    NOT HASONEVALUE(defects[defect_type]),
+			    BLANK(),
+			    SUMX(
+			        FILTER(
+			            ALLSELECTED(defects[defect_type]),
+			            [Total Defects] >= CurrentCount
+			        ),
+			        [Total Defects]
+			    )
+			)
+		formatString: 0
+		lineageTag: b1d4bd17-00b6-41c7-ac55-b04d150552fb
+
+	measure 'Pareto Cumulative %' =
+			
+			DIVIDE(
+			    [Pareto Cumulative Defects],
+			    CALCULATE(
+			        [Total Defects],
+			        ALLSELECTED(defects[defect_type])
+			    )
+			)
+		lineageTag: 51ab0e53-ad0e-48e6-86e0-827d6fd79399
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Boards with Selected Defect' =
+			
+			DISTINCTCOUNT(defects[board_id])
+		formatString: 0
+		lineageTag: 7908bfc3-617e-4159-9b7b-8738b3d3803e
+
+	measure 'Affected Boards %' =
+			
+			DIVIDE(
+			    [Boards with Selected Defect],
+			    [Total_board]
+			)
+		lineageTag: 9cd298bd-33ae-4ca4-a652-64957fe03ba6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		formatString: General Date
+		lineageTag: b025768d-71cc-4124-8507-0066d85eb6e7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: d051b520-cb5c-4596-8796-1386890ec138
+			defaultHierarchy: LocalDateTable_175c5270-4f9d-4533-b3f4-47dc1d79d990.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: f37509d9-7a1a-4e53-a969-403d2f4d0d53
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: f69dc40a-8aa9-4aed-9ba3-6da25ecd227a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = calculated
+		mode: import
+		source =
+				
+				VAR StartDate =
+				    MIN(
+				        MIN(inspections[production_date]),
+				        MIN(measurements[production_date])
+				    )
+				VAR EndDate =
+				    MAX(
+				        MAX(inspections[production_date]),
+				        MAX(measurements[production_date])
+				    )
+				RETURN
+				ADDCOLUMNS(
+				    CALENDAR(
+				        DATE(YEAR(StartDate), 1, 1),
+				        DATE(YEAR(EndDate), 12, 31)
+				    ),
+				    "Year", YEAR([Date]),
+				    "Month", FORMAT([Date], "YYYY-MM")
+				)
+
+	annotation PBI_Id = 970c29294c0345cd9cd6cb762c4832d6
+

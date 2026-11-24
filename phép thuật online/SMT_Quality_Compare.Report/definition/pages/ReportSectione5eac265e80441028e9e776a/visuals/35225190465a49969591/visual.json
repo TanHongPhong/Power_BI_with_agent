@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "35225190465a49969591",
+  "position": {
+    "x": 35,
+    "y": 360,
+    "z": 11000,
+    "height": 340,
+    "width": 675,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "lineClusteredColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "defects"
+                    }
+                  },
+                  "Property": "defect_type"
+                }
+              },
+              "queryRef": "defects.defect_type",
+              "nativeQueryRef": "defect_type",
+              "active": true
+            }
+          ]
+        },
+        "ColumnY": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "defects"
+                    }
+                  },
+                  "Property": "Total Defects"
+                }
+              },
+              "queryRef": "defects.Total Defects",
+              "nativeQueryRef": "Total Defects"
+            }
+          ]
+        },
+        "LineY": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "defects"
+                    }
+                  },
+                  "Property": "Pareto Cumulative %"
+                }
+              },
+              "queryRef": "defects.Pareto Cumulative %",
+              "nativeQueryRef": "Pareto Cumulative %"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Pareto • defects by category + cumulative share'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

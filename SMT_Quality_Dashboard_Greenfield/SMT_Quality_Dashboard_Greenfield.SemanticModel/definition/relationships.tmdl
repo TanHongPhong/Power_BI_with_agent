@@ -1,0 +1,57 @@
+relationship 'Phase to Measurements'
+	fromColumn: Measurements.phase
+	toColumn: Phase.Phase
+
+relationship 'Phase to Inspections'
+	fromColumn: Inspections.phase
+	toColumn: Phase.Phase
+
+relationship 'Phase to Defects'
+	fromColumn: Defects.phase
+	toColumn: Phase.Phase
+
+relationship 'Week to Measurements'
+	fromColumn: Measurements.week
+	toColumn: Week.Week
+
+relationship 'Week to Inspections'
+	fromColumn: Inspections.week
+	toColumn: Week.Week
+
+relationship 'Week to Defects'
+	fromColumn: Defects.week
+	toColumn: Week.Week
+
+relationship 'Shift to Measurements'
+	fromColumn: Measurements.shift
+	toColumn: Shift.Shift
+
+relationship 'Shift to Inspections'
+	fromColumn: Inspections.shift
+	toColumn: Shift.Shift
+
+relationship cbcd8d47-63ee-4645-81b1-8978cc4a67b6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Measurements.timestamp
+	toColumn: LocalDateTable_7ffb63f6-dbbd-4806-87ce-b7fecc46338b.Date
+
+relationship e5ba6354-5409-410d-a069-11edf93b3a31
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Inspections.timestamp
+	toColumn: LocalDateTable_e1b84cd0-d7ee-4873-9119-50fa311cf81f.Date
+
+relationship 5f536269-2db7-4349-9a51-357275c42bcd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Defects.timestamp
+	toColumn: LocalDateTable_940aad5d-5427-4b6a-ac49-6c177474947f.Date
+
+relationship 637067d2-d989-4c64-ace0-4ebff0da8c2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SPC XbarR'.timestamp
+	toColumn: LocalDateTable_c54e104f-bd96-4c13-81fd-d76f62f347bb.Date
+
+relationship 62fe3dc4-d417-4b31-ac16-658e9db5e794
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SPC p Hourly'.timestamp
+	toColumn: LocalDateTable_50eec76a-b759-44af-8f0c-13ea6b0a0c64.Date
+

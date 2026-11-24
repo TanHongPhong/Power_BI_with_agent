@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "40404040404040404041",
+  "position": {
+    "x": 980,
+    "y": 100,
+    "z": 3,
+    "height": 500,
+    "width": 900,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Defects"
+                    }
+                  },
+                  "Property": "week"
+                }
+              },
+              "queryRef": "Defects.week",
+              "nativeQueryRef": "week",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Defects"
+                    }
+                  },
+                  "Property": "Total Defects"
+                }
+              },
+              "queryRef": "Defects.Total Defects",
+              "nativeQueryRef": "Total Defects"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

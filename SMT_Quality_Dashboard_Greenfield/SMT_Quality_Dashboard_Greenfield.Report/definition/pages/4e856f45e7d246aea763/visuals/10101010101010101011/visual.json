@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "10101010101010101011",
+  "position": {
+    "x": 980,
+    "y": 100,
+    "z": 3,
+    "height": 160,
+    "width": 800,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Inspections"
+                    }
+                  },
+                  "Property": "Total Boards"
+                }
+              },
+              "queryRef": "Inspections.Total Boards",
+              "nativeQueryRef": "Total Boards"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Inspections"
+                    }
+                  },
+                  "Property": "Yield %"
+                }
+              },
+              "queryRef": "Inspections.Yield %",
+              "nativeQueryRef": "Yield %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Defects"
+                    }
+                  },
+                  "Property": "DPMO"
+                }
+              },
+              "queryRef": "Defects.DPMO",
+              "nativeQueryRef": "DPMO"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

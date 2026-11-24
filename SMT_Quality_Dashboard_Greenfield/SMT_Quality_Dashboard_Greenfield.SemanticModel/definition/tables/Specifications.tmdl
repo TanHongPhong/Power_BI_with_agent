@@ -1,0 +1,64 @@
+table Specifications
+	lineageTag: 45070903-62ee-41c6-b342-26dc33622ffa
+
+	measure 'LSL Target' = MAX(Specifications[lsl])
+		formatString: 0.00
+		lineageTag: 646e60e1-40c3-4a68-b76c-79b2ce3e8c02
+
+	measure 'Specification Target' = MAX(Specifications[target])
+		formatString: 0.00
+		lineageTag: cdd2ac60-e100-4ef3-9748-fd39d3e0d504
+
+	measure 'USL Target' = MAX(Specifications[usl])
+		formatString: 0.00
+		lineageTag: 5bbc73d5-688f-4d49-9bde-9e74e1fea759
+
+	column ctq
+		dataType: string
+		lineageTag: 74306f20-e4a7-4b9c-8d22-3b380b44dd14
+		sourceColumn: ctq
+
+	column target
+		dataType: double
+		lineageTag: e8eb2342-0b1c-443b-927b-68556547e35a
+		summarizeBy: sum
+		sourceColumn: target
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lsl
+		dataType: double
+		lineageTag: f12996fb-b285-4fa5-b264-91c98f543cfc
+		summarizeBy: sum
+		sourceColumn: lsl
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column usl
+		dataType: double
+		lineageTag: c863712e-7723-49bb-8d4e-2568eff93c7b
+		summarizeBy: sum
+		sourceColumn: usl
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column subgroup_size
+		dataType: int64
+		lineageTag: d363208b-4b00-4c03-9a6c-dd949d722159
+		sourceColumn: subgroup_size
+
+	column opportunities_per_board
+		dataType: int64
+		lineageTag: e3249726-c254-49a3-8b39-dc8eb7b660a3
+		sourceColumn: opportunities_per_board
+
+	partition Specifications = m
+		mode: import
+		source = let Source = Csv.Document(File.Contents("D:\\A UEH_UNIVERSITY\\MONEY\\Portfilio\\marnufacturing_digitalization\\Lean-Sigma-Learners-Portfolio\\data\\specs.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]), Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]), Typed = Table.TransformColumnTypes(Promoted, {{"ctq", type text},{"target", type number},{"lsl", type number},{"usl", type number},{"subgroup_size", Int64.Type},{"opportunities_per_board", Int64.Type}}) in Typed
+

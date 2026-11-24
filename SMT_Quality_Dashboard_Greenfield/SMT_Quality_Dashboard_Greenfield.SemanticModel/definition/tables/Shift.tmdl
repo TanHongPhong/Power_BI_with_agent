@@ -1,0 +1,15 @@
+/// Conformed manufacturing shift dimension for measurements and inspections.
+table Shift
+	lineageTag: e9725bc2-321b-4492-a0ec-4da00bc8f737
+
+	column Shift
+		dataType: string
+		isKey
+		isNullable: false
+		lineageTag: a838faa4-dff4-4ab0-bf50-6ad7f5134b04
+		sourceColumn: Shift
+
+	partition Shift = m
+		mode: import
+		source = #table(type table [Shift = text], {{"A"}, {"B"}})
+

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "b0ac9bd04c794dbcac8c",
+  "position": {
+    "x": 35,
+    "y": 682,
+    "z": 12000,
+    "height": 320,
+    "width": 665,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "subgroup_id"
+                }
+              },
+              "queryRef": "SPC_XbarR.subgroup_id",
+              "nativeQueryRef": "subgroup_id",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R Point"
+                }
+              },
+              "queryRef": "SPC_XbarR.R Point",
+              "nativeQueryRef": "R Point"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R CL"
+                }
+              },
+              "queryRef": "SPC_XbarR.R CL",
+              "nativeQueryRef": "R CL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R UCL"
+                }
+              },
+              "queryRef": "SPC_XbarR.R UCL",
+              "nativeQueryRef": "R UCL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "R LCL"
+                }
+              },
+              "queryRef": "SPC_XbarR.R LCL",
+              "nativeQueryRef": "R LCL"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'R chart • within-subgroup spread (µm)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

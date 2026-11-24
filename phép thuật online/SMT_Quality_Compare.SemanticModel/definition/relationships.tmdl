@@ -1,0 +1,83 @@
+relationship 70b10e02ef9345f6905e
+	fromColumn: defects.board_id
+	toColumn: inspections.board_id
+
+relationship 0cfbce34d43e4530a117
+	fromColumn: measurements.week
+	toColumn: DimWeek.week
+
+relationship f76894f1099843f98fb6
+	fromColumn: inspections.week
+	toColumn: DimWeek.week
+
+relationship f1a7e64ff10843dba05d
+	fromColumn: SPC_XbarR.week
+	toColumn: DimWeek.week
+
+relationship e1856195a0fa4c219f03
+	fromColumn: SPC_p_Hourly.week
+	toColumn: DimWeek.week
+
+relationship 7037c0ad293846ea84a7
+	fromColumn: Analysis_Hourly.week
+	toColumn: DimWeek.week
+
+relationship 64d0654a460e47daa25e
+	fromColumn: QQ_Points.week
+	toColumn: DimWeek.week
+
+relationship 6eee69e4f86a4512a9b5
+	fromColumn: measurements.production_date
+	toColumn: DimDate.Date
+
+relationship bd69c0a314bf4edd9d7f
+	fromColumn: inspections.production_date
+	toColumn: DimDate.Date
+
+relationship 16b1c1f8542b4c418e45
+	fromColumn: SPC_XbarR.production_date
+	toColumn: DimDate.Date
+
+relationship 020641ff038e4837b9ed
+	fromColumn: SPC_p_Hourly.production_date
+	toColumn: DimDate.Date
+
+relationship 42efb800bfc940448259
+	fromColumn: Analysis_Hourly.production_date
+	toColumn: DimDate.Date
+
+relationship d6e6a9a6-ebdf-40d5-9ba6-f6e30698218a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: measurements.timestamp
+	toColumn: LocalDateTable_09e7c01a-d1c6-4c39-b00d-4ff0508e2d4c.Date
+
+relationship 5b0861f9-add4-4177-afb6-208eff8010fd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: inspections.timestamp
+	toColumn: LocalDateTable_40baefd9-2812-48f5-8374-d4e287e2f54e.Date
+
+relationship 50161d99-066b-4c43-993a-f23d6ad5d553
+	joinOnDateBehavior: datePartOnly
+	fromColumn: defects.timestamp
+	toColumn: LocalDateTable_af903dcc-c9d6-40f2-9fb6-3fec8a6451d8.Date
+
+relationship 112a95b7-2e8a-4c73-bbad-0111b56ee1c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SPC_XbarR.timestamp
+	toColumn: LocalDateTable_35932184-f12a-445e-8b23-196de2071834.Date
+
+relationship 35eef631-b1c6-4f21-80e6-3440d953c257
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SPC_p_Hourly.timestamp
+	toColumn: LocalDateTable_3d35dcba-2668-498a-bbee-1626fef7645b.Date
+
+relationship 84841522-da7f-436c-ade0-b63ed795a212
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Analysis_Hourly.timestamp
+	toColumn: LocalDateTable_e6967ce4-dce7-4b0b-b1ba-36868be2124d.Date
+
+relationship 29cb8334-b6ef-4acc-a517-4c3eb03e7eb9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.Date
+	toColumn: LocalDateTable_9b582e18-d4df-49c2-a482-d6d02315a281.Date
+

@@ -1,0 +1,32 @@
+table DQ_Checks
+	lineageTag: e3661a55-e901-46f0-83f6-2c8d40a7e83e
+
+	measure 'DQ Total Issues' = SUM(DQ_Checks[Issues])
+		formatString: #,##0
+		lineageTag: 869ab936-3d86-445b-8872-d2a7d037b569
+
+	column Check
+		dataType: string
+		lineageTag: 8b5bd2cc-0c41-4f92-b1f5-c251156b44f1
+		summarizeBy: none
+		sourceColumn: Check
+
+	column Issues
+		dataType: int64
+		lineageTag: b02b6119-4187-46b5-bc0f-089bcf5e7c97
+		summarizeBy: none
+		sourceColumn: Issues
+
+	partition DQ_Checks = m
+		mode: import
+		source =
+				let
+				    EncodedCsv = Text.Combine({
+				        "Q2hlY2ssSXNzdWVzCk1pc3NpbmcgbWVhc3VyZW1lbnQgSURzLDAKRHVwbGljYXRlIG1lYXN1cmVtZW50IElEcywwCkR1cGxpY2F0ZSBpbnNwZWN0aW9uIGJvYXJkIElEcywwCkR1cGxpY2F0ZSBkZWZlY3QgSURzLDAKT3JwaGFuIGRlZmVjdCBib2FyZCBJRHMsMApJbmNvcnJlY3QgUENCIGRlZmVjdCBjb3VudHMsMApJbmNvcnJlY3QgUEFTUy9GQUlMIGRpc3Bvc2l0aW9uLDAKSW52YWxpZCBzdWJncm91cCBzaXplcywwCk1pc3NpbmcgcGFzdGUgaGVpZ2h0cywwCkludmFsaWQgcGhhc2UgdmVyc3VzIHdlZWssMApJbnZhbGlkIGluc3BlY3Rpb24gb3Bwb3J0dW5pdGllcywwCg=="
+				    }),
+				    CsvSource = Csv.Document(Binary.FromText(EncodedCsv, BinaryEncoding.Base64), [Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(CsvSource, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(PromotedHeaders, {{"Check", type text},{"Issues", Int64.Type}}, "en-US")
+				in
+				    Typed
+

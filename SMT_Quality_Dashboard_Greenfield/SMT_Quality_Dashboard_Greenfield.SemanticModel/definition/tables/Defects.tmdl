@@ -1,0 +1,110 @@
+table Defects
+	lineageTag: 38f4fdb6-9e8b-423c-91ca-fd2286e4bf35
+
+	measure 'Total Defects' = COUNTROWS(Defects)
+		formatString: #,##0
+		lineageTag: a0a5efb8-f669-4ea6-a0ef-02f83265dd7b
+
+	measure DPMO = DIVIDE([Total Defects], [Total Opportunities]) * 1000000
+		formatString: #,##0
+		lineageTag: 265dfa15-24c5-41d2-a780-3ebf5e2c0b83
+
+	measure 'Defect Contribution %' = DIVIDE([Total Defects], CALCULATE([Total Defects], ALL(Defects[defect_type])))
+		formatString: 0.0%
+		lineageTag: e1ae9995-3715-4bde-9b17-0d1c18ea61bb
+
+	measure 'Pareto Cumulative %' = VAR _current=[Total Defects] RETURN DIVIDE(SUMX(FILTER(ALL(Defects[defect_type]), CALCULATE([Total Defects]) >= _current), CALCULATE([Total Defects])), CALCULATE([Total Defects], ALL(Defects[defect_type])))
+		formatString: 0.0%
+		lineageTag: 0cc60a25-e2a2-4840-8474-b25bde16f3c6
+
+	/// DPMO fixed to baseline weeks 1-4; ignores conformed Phase, Week, and Shift slicers.
+	measure 'Baseline DPMO' =
+			VAR DefectCount = CALCULATE ( [Total Defects], REMOVEFILTERS ( 'Week' ), REMOVEFILTERS ( 'Phase' ), REMOVEFILTERS ( 'Shift' ), Defects[week] >= 1, Defects[week] <= 4 )
+			VAR OpportunityCount = CALCULATE ( [Total Opportunities], REMOVEFILTERS ( 'Week' ), REMOVEFILTERS ( 'Phase' ), REMOVEFILTERS ( 'Shift' ), Inspections[week] >= 1, Inspections[week] <= 4 )
+			RETURN DIVIDE ( DefectCount, OpportunityCount ) * 1000000
+		formatString: #,#0
+		displayFolder: Improvement
+		lineageTag: 2b3c2494-6cc8-45f4-880a-04524c196c6f
+
+	/// DPMO fixed to improved weeks 5-8; ignores conformed Phase, Week, and Shift slicers.
+	measure 'Improved DPMO' =
+			VAR DefectCount = CALCULATE ( [Total Defects], REMOVEFILTERS ( 'Week' ), REMOVEFILTERS ( 'Phase' ), REMOVEFILTERS ( 'Shift' ), Defects[week] >= 5, Defects[week] <= 8 )
+			VAR OpportunityCount = CALCULATE ( [Total Opportunities], REMOVEFILTERS ( 'Week' ), REMOVEFILTERS ( 'Phase' ), REMOVEFILTERS ( 'Shift' ), Inspections[week] >= 5, Inspections[week] <= 8 )
+			RETURN DIVIDE ( DefectCount, OpportunityCount ) * 1000000
+		formatString: #,#0
+		displayFolder: Improvement
+		lineageTag: b216f4c1-1601-447a-aefb-3922f8846561
+
+	/// Baseline DPMO minus improved DPMO.
+	measure 'DPMO Reduction' = [Baseline DPMO] - [Improved DPMO]
+		formatString: #,#0
+		displayFolder: Improvement
+		lineageTag: 1996c32d-fd29-4208-9177-df141243e606
+
+	/// DPMO aligned to an Inspections phase category for disconnected fact tables.
+	measure 'DPMO by Phase' =
+			VAR SelectedPhase = SELECTEDVALUE ( Inspections[phase] )
+			VAR DefectCount = CALCULATE ( [Total Defects], REMOVEFILTERS ( Defects[phase] ), Defects[phase] = SelectedPhase )
+			VAR OpportunityCount = CALCULATE ( [Total Opportunities], REMOVEFILTERS ( Inspections[phase] ), Inspections[phase] = SelectedPhase )
+			RETURN IF ( ISBLANK ( SelectedPhase ), [DPMO], DIVIDE ( DefectCount, OpportunityCount ) * 1000000 )
+		formatString: #,#0
+		displayFolder: Improvement
+		lineageTag: 87d0bacc-3209-4c62-b250-f49a6b6553e6
+
+	column defect_id
+		dataType: int64
+		lineageTag: cc24e8fa-1229-4d4a-9def-005449c50627
+		summarizeBy: sum
+		sourceColumn: defect_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column board_id
+		dataType: int64
+		lineageTag: 01a2026d-98ad-404b-b4ee-56214b5c7c9f
+		summarizeBy: sum
+		sourceColumn: board_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		lineageTag: 2087a519-6965-4d2d-ab1d-f791914506f1
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		variation Variation
+			isDefault
+			relationship: 5f536269-2db7-4349-9a51-357275c42bcd
+			defaultHierarchy: LocalDateTable_940aad5d-5427-4b6a-ac49-6c177474947f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		lineageTag: 04d5003e-1f6c-4177-8ab3-0b64cfab30f7
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		dataType: string
+		lineageTag: d7d938d4-87cc-43a2-b1da-043bfaee03b7
+		summarizeBy: none
+		sourceColumn: phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column defect_type
+		dataType: string
+		lineageTag: ddcf8662-f2a4-4174-a7ac-a16ced1e07a5
+		summarizeBy: none
+		sourceColumn: defect_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Defects = m
+		mode: import
+		source = let Source = Csv.Document(File.Contents("D:\\A UEH_UNIVERSITY\\MONEY\\Portfilio\\marnufacturing_digitalization\\Lean-Sigma-Learners-Portfolio\\data\\defects.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]), Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]), Typed = Table.TransformColumnTypes(Promoted, {{"defect_id", Int64.Type},{"board_id", Int64.Type},{"timestamp", type datetime},{"week", Int64.Type},{"phase", type text},{"defect_type", type text}}) in Typed
+

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "60556c3af940479993a7",
+  "position": {
+    "x": 35,
+    "y": 190,
+    "z": 6000,
+    "height": 110,
+    "width": 322,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC_XbarR"
+                    }
+                  },
+                  "Property": "Total SPC Subgroups"
+                }
+              },
+              "queryRef": "SPC_XbarR.Total SPC Subgroups",
+              "nativeQueryRef": "Total SPC Subgroups"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

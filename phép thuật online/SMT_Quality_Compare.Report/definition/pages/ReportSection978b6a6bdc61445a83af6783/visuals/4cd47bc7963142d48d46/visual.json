@@ -1,0 +1,134 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "4cd47bc7963142d48d46",
+  "position": {
+    "x": 35,
+    "y": 1005,
+    "z": 15000,
+    "height": 184,
+    "width": 1360,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimWeek"
+                    }
+                  },
+                  "Property": "phase"
+                }
+              },
+              "queryRef": "DimWeek.phase",
+              "nativeQueryRef": "phase",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Q1 Height"
+                }
+              },
+              "queryRef": "measurements.Q1 Height",
+              "nativeQueryRef": "Q1 Height"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Median Height"
+                }
+              },
+              "queryRef": "measurements.Median Height",
+              "nativeQueryRef": "Median Height"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Q3 Height"
+                }
+              },
+              "queryRef": "measurements.Q3 Height",
+              "nativeQueryRef": "Q3 Height"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "IQR Height"
+                }
+              },
+              "queryRef": "measurements.IQR Height",
+              "nativeQueryRef": "IQR Height"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "measurements"
+                    }
+                  },
+                  "Property": "Box Outliers"
+                }
+              },
+              "queryRef": "measurements.Box Outliers",
+              "nativeQueryRef": "Box Outliers"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Box-plot statistics • quartiles and IQR'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

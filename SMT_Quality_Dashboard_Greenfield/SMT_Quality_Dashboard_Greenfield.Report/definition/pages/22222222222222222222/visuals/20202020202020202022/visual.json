@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "20202020202020202022",
+  "position": {
+    "x": 40,
+    "y": 630,
+    "z": 4,
+    "height": 400,
+    "width": 900,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC p Hourly"
+                    }
+                  },
+                  "Property": "timestamp"
+                }
+              },
+              "queryRef": "SPC p Hourly.timestamp",
+              "nativeQueryRef": "timestamp",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC p Hourly"
+                    }
+                  },
+                  "Property": "p Point"
+                }
+              },
+              "queryRef": "SPC p Hourly.p Point",
+              "nativeQueryRef": "p Point"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC p Hourly"
+                    }
+                  },
+                  "Property": "p CL"
+                }
+              },
+              "queryRef": "SPC p Hourly.p CL",
+              "nativeQueryRef": "p CL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC p Hourly"
+                    }
+                  },
+                  "Property": "p UCL"
+                }
+              },
+              "queryRef": "SPC p Hourly.p UCL",
+              "nativeQueryRef": "p UCL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SPC p Hourly"
+                    }
+                  },
+                  "Property": "p LCL"
+                }
+              },
+              "queryRef": "SPC p Hourly.p LCL",
+              "nativeQueryRef": "p LCL"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

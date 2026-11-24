@@ -1,0 +1,84 @@
+table 'SPC p Hourly'
+	lineageTag: 18c6774c-da40-47f2-8af2-57fcc7087122
+
+	measure 'p Point' = DIVIDE(SUM('SPC p Hourly'[Fails]),SUM('SPC p Hourly'[Boards]))
+		formatString: 0.0%
+		lineageTag: 738dd8fb-2c9c-4b60-aa43-847299cda45e
+
+	measure 'p CL' = CALCULATE(DIVIDE(SUM('SPC p Hourly'[Fails]),SUM('SPC p Hourly'[Boards])),REMOVEFILTERS('SPC p Hourly'[timestamp]))
+		formatString: 0.0%
+		lineageTag: e2c8065a-9f40-4f4c-a567-4b0588a4800a
+
+	measure 'p UCL' = VAR p=[p CL] VAR n=SUM('SPC p Hourly'[Boards]) RETURN MIN(1,p+3*SQRT(DIVIDE(p*(1-p),n)))
+		formatString: 0.0%
+		lineageTag: 0024aad2-65ba-40c1-bc18-fce722fb8f87
+
+	measure 'p LCL' = VAR p=[p CL] VAR n=SUM('SPC p Hourly'[Boards]) RETURN MAX(0,p-3*SQRT(DIVIDE(p*(1-p),n)))
+		formatString: 0.0%
+		lineageTag: 6aeebcf9-930d-441a-99ae-6744036e4e04
+
+	measure 'p Alarm' = IF([p Point]>[p UCL] || [p Point]<[p LCL],1,0)
+		formatString: 0
+		lineageTag: 90cc61be-bc98-487f-b8c7-1310ae3cac64
+
+	measure 'p Violations' = SUMX(VALUES('SPC p Hourly'[timestamp]),[p Alarm])
+		formatString: 0
+		lineageTag: 95d40a83-17ad-420b-b0e2-a643ae640886
+
+	/// p-chart alarms aligned to the selected SPC XbarR phase in the stability matrix.
+	measure 'p Violations by Phase' =
+			VAR SelectedPhase = SELECTEDVALUE ( 'SPC XbarR'[phase] )
+			RETURN CALCULATE ( [p Violations], REMOVEFILTERS ( 'SPC p Hourly'[phase] ), 'SPC p Hourly'[phase] = SelectedPhase )
+		formatString: #,#0
+		displayFolder: SPC
+		lineageTag: 4e5c249c-3a0f-4fe6-a9cf-408b3fe3ebb8
+
+	column timestamp
+		lineageTag: cc1d52bd-70d6-4b79-be59-e7b59863f8a3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Inspections[timestamp]
+
+		variation Variation
+			isDefault
+			relationship: 62fe3dc4-d417-4b31-ac16-658e9db5e794
+			defaultHierarchy: LocalDateTable_50eec76a-b759-44af-8f0c-13ea6b0a0c64.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		lineageTag: 54bc01b5-93ee-4ce9-a813-a49785c97592
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Inspections[week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column phase
+		lineageTag: ea95049f-5811-4d20-80e3-7e462e00c2f6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Inspections[phase]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Boards
+		lineageTag: e173041a-3d53-4656-b344-f62f181b5d19
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Boards]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fails
+		lineageTag: 0c3ef225-d9ab-4db4-a4cf-9ce017ed3710
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Fails]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SPC p Hourly' = calculated
+		mode: import
+		source = SUMMARIZECOLUMNS(Inspections[timestamp], Inspections[week], Inspections[phase], "Boards", COUNTROWS(Inspections), "Fails", CALCULATE(COUNTROWS(Inspections), Inspections[disposition] = "FAIL"))
+

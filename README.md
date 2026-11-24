@@ -124,7 +124,57 @@ The screenshots and project folders document the contribution behind the finishe
 | **04 — Defect & Root Cause Analysis** | Designed and manually edited by the portfolio author. |
 | **05 — Improvement Assessment & Control Plan** | Edited with Codex assistance. |
 
-The final agent-assisted deliverable remains the report in [`phép thuật online`](./ph%C3%A9p%20thu%E1%BA%ADt%20online/). Screenshot assets can be added under [`assets/screenshots`](./assets/screenshots/) as visual evidence of this development path.
+The final agent-assisted deliverable remains the report in [`phép thuật online`](./ph%C3%A9p%20thu%E1%BA%ADt%20online/). The gallery below provides visual evidence of both the finished agent-assisted report and the manual/Codex-assisted development work.
+
+## Dashboard gallery
+
+### Featured agent-assisted dashboard
+
+The following five pages are from the featured report in `phép thuật online`. Together, they tell a complete manufacturing-quality story—from the initial signal to the proposed control plan.
+
+![Agent-assisted Quality Overview](assets/screenshots/agent-01-quality-overview.png)
+
+*Quality Overview — headline KPIs, weekly defect-rate and DPMO trends, defect check sheet, and data-quality validation results.*
+
+![Agent-assisted Statistical Process Control](assets/screenshots/agent-02-statistical-process-control.png)
+
+*Statistical Process Control — X-bar, R, and p charts identify special-cause variation and record process signals by subgroup.*
+
+![Agent-assisted Process Capability](assets/screenshots/agent-03-process-capability.png)
+
+*Process Capability — distribution, Q–Q plot, out-of-spec rate, and Cp/Cpk/Pp/Ppk comparison evaluate conformance to the 100–140 µm specification.*
+
+![Agent-assisted Defect and Root Cause Analysis](assets/screenshots/agent-04-defect-root-cause-analysis.png)
+
+*Defect & Root Cause Analysis — defect prioritization, stratification, process association, and 6M hypotheses focus the investigation on the highest-impact causes.*
+
+![Agent-assisted Improvement Assessment](assets/screenshots/agent-05-improvement-assessment.png)
+
+*Improvement Assessment — before/after scorecard, weekly trajectory, capability and stability summary, and operational control recommendations confirm the proposed intervention.*
+
+### Manual build and Codex-assisted refinement
+
+These screenshots show the Power BI Desktop development path. Pages 01–04 were designed and edited manually; the final Improvement Assessment page was refined with Codex assistance.
+
+![Manual Quality Overview](assets/screenshots/manual-01-quality-overview.png)
+
+*Manual build — Quality Overview combines board-level KPIs, week-level trends, and a defect check sheet in one operational landing page.*
+
+![Manual Statistical Process Control](assets/screenshots/manual-02-statistical-process-control.png)
+
+*Manual build — Statistical Process Control brings the X-bar, R, and p charts together with violation counts and a subgroup-level signal table.*
+
+![Manual Process Capability](assets/screenshots/manual-03-process-capability.png)
+
+*Manual build — Process Capability compares baseline and improved distributions through capability metrics, Q–Q plots, a histogram, and box plots.*
+
+![Manual Defect and Root Cause Analysis](assets/screenshots/manual-04-defect-root-cause-analysis.png)
+
+*Manual build — Defect & Root Cause Analysis visualizes Pareto priorities, defect stratification, and the relationship between paste height and defect rate.*
+
+![Codex-assisted Improvement Assessment](assets/screenshots/codex-05-improvement-assessment.png)
+
+*Codex-assisted refinement — Improvement Assessment & Control Plan summarizes the business impact of the week-5 intervention and translates the findings into sustainment actions.*
 
 ## Tools and methods
 

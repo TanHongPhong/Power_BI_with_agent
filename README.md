@@ -6,10 +6,10 @@ An end-to-end Power BI portfolio project that applies the DMAIC framework to a s
 
 ## Featured deliverable
 
-The primary deliverable is the agent-assisted report in [`phép thuật online`](./ph%C3%A9p%20thu%E1%BA%ADt%20online/):
+The primary deliverable is the agent-assisted report in [`SMT_agent_quality_dashboard`](./SMT_agent_quality_dashboard/):
 
 ```text
-phép thuật online/
+SMT_agent_quality_dashboard/
 └── SMT_Quality_Compare.pbip
 ```
 
@@ -68,7 +68,7 @@ This repository intentionally preserves the working path behind the final report
 | Folder | Role |
 |---|---|
 | [`SMT_quality_dashboard`](./SMT_quality_dashboard/) | **Manual build** — created by the portfolio author without Codex or Greenfield in the project name. |
-| [`phép thuật online`](./ph%C3%A9p%20thu%E1%BA%ADt%20online/) | **Featured agent-assisted build** — the strongest and most complete agent-based version; use this as the main deliverable. |
+| [`SMT_agent_quality_dashboard`](./SMT_agent_quality_dashboard/) | **Featured agent-assisted build** — the strongest and most complete agent-based version; use this as the main deliverable. |
 | [`SMT_quality_dashboard_CODEX`](./SMT_quality_dashboard_CODEX/) | Reference iteration retained for comparison and development history. |
 | [`SMT_Quality_Dashboard_Greenfield`](./SMT_Quality_Dashboard_Greenfield/) | Reference greenfield iteration retained for comparison and development history. |
 
@@ -81,7 +81,7 @@ Lean-Sigma-Learners-Portfolio/
 ├── data/                                  # Synthetic source data and dictionary
 ├── generate_data.py                       # Seeded data generator
 ├── SMT_quality_dashboard/                 # Manual Power BI build
-├── phép thuật online/                     # Featured final agent-assisted PBIP report
+├── SMT_agent_quality_dashboard/           # Featured final agent-assisted PBIP report
 ├── SMT_quality_dashboard_CODEX/           # Reference iteration
 ├── SMT_Quality_Dashboard_Greenfield/      # Reference iteration
 └── README.md
@@ -124,13 +124,13 @@ The screenshots and project folders document the contribution behind the finishe
 | **04 — Defect & Root Cause Analysis** | Designed and manually edited by the portfolio author. |
 | **05 — Improvement Assessment & Control Plan** | Edited with Codex assistance. |
 
-The final agent-assisted deliverable remains the report in [`phép thuật online`](./ph%C3%A9p%20thu%E1%BA%ADt%20online/). The gallery below provides visual evidence of both the finished agent-assisted report and the manual/Codex-assisted development work.
+The final agent-assisted deliverable remains the report in [`SMT_agent_quality_dashboard`](./SMT_agent_quality_dashboard/). The gallery below provides visual evidence of both the finished agent-assisted report and the manual/Codex-assisted development work.
 
 ## Dashboard gallery
 
 ### Featured agent-assisted dashboard
 
-The following five pages are from the featured report in `phép thuật online`. Together, they tell a complete manufacturing-quality story—from the initial signal to the proposed control plan.
+The following five pages are from the featured report in `SMT_agent_quality_dashboard`. Together, they tell a complete manufacturing-quality story—from the initial signal to the proposed control plan.
 
 ![Agent-assisted Quality Overview](assets/screenshots/agent-01-quality-overview.png)
 
